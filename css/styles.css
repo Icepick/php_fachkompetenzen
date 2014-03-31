@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 body {
     background-color: #E7E6DE;
-    background-image: url("images/bg_body.png");
+    background-image: url("../images/bg_body.png");
     background-position: 0 1px;
     background-repeat: repeat-x;
     color: #333333;
@@ -88,31 +88,31 @@ h2 {
     font-size: 19px;
 }
 .external, .external-link, .external-link-new-window {
-    background-image: url("/fileadmin/templates/images/icons/rte/external_link_new_window.png");
+    background-image: url("../images/icons/rte/external_link_new_window.png");
     background-position: 0 1px;
     background-repeat: no-repeat;
     padding-left: 15px;
 }
 .download {
-    background-image: url("/fileadmin/templates/images/icons/rte/download.png");
+    background-image: url("../images/icons/rte/download.png");
     background-position: 0 1px;
     background-repeat: no-repeat;
     padding-left: 15px;
 }
 .mail {
-    background-image: url("/fileadmin/templates/images/icons/rte/mail.png");
+    background-image: url("../images/icons/rte/mail.png");
     background-position: 0 1px;
     background-repeat: no-repeat;
     padding-left: 15px;
 }
 .lightbox {
-    background-image: url("/fileadmin/templates/images/icons/rte/lightbox.png");
+    background-image: url("../images/icons/rte/lightbox.png");
     background-position: 0 1px;
     background-repeat: no-repeat;
     padding-left: 15px;
 }
 .back_link a, #calendar-event-backlink a {
-    background-image: url("/fileadmin/templates/images/icons/rte/internal_link_back.png");
+    background-image: url("../images/icons/rte/internal_link_back.png");
     background-position: 0 1px;
     background-repeat: no-repeat;
     padding-left: 15px;
@@ -127,7 +127,7 @@ a:hover, a:hover .more, #content_right a:hover {
     text-decoration: none;
 }
 .internal, .internal-link, .internal-link-new-window, .more a, a .more {
-    background-image: url("/fileadmin/templates/images/icons/rte/internal_link.png");
+    background-image: url("../images/icons/rte/internal_link.png");
     background-position: 0 1px;
     background-repeat: no-repeat;
     padding-left: 15px;
@@ -191,7 +191,7 @@ a:hover, a:hover .more, #content_right a:hover {
     text-decoration: underline;
 }
 #search_button_top {
-    background-image: url("/fileadmin/templates/images/icons/search_button_top_icon.png");
+    background-image: url("../images/icons/search_button_top_icon.png");
     background-position: 0 0;
     background-repeat: no-repeat;
     border-right: 1px solid #7A7A7A;
@@ -218,7 +218,7 @@ a:hover, a:hover .more, #content_right a:hover {
     width: 30px;
 }
 .search_link a {
-    background-image: url("/fileadmin/templates/images/icons/head_search_icon.png");
+    background-image: url("../images/icons/head_search_icon.png");
     background-position: 0 0;
     background-repeat: no-repeat;
     float: right;
@@ -234,7 +234,7 @@ a:hover, a:hover .more, #content_right a:hover {
     float: right;
 }
 #search_box input.buttonSearchTop {
-    background-image: url("images/bg_button2.png");
+    background-image: url("../images/bg_button2.png");
     background-position: 0 0;
     background-repeat: repeat-x;
     border: 0 none;
@@ -247,7 +247,7 @@ a:hover, a:hover .more, #content_right a:hover {
     width: 70px;
 }
 #search_box input.buttonSearchTop:hover {
-    background-image: url("images/bg_button2h.png");
+    background-image: url("../images/bg_button2h.png");
     color: #FFFFFF;
 }
 #search_box input.inputSearchTop {
@@ -379,18 +379,18 @@ a:hover, a:hover .more, #content_right a:hover {
     width: 16px;
 }
 .content_icons_top .rss_news a {
-    background-image: url("/fileadmin/templates/images/icons/social.png");
+    background-image: url("../images/icons/social.png");
     background-position: -86px 0;
     background-repeat: no-repeat;
     float: right;
 }
 .content_icons_top .addthis_button_email {
-    background-image: url("/fileadmin/templates/images/icons/social.png");
+    background-image: url("../images/icons/social.png");
     background-position: -46px 0;
     background-repeat: no-repeat;
 }
 .content_icons_top .addthis_button_print {
-    background-image: url("/fileadmin/templates/images/icons/social.png");
+    background-image: url("../images/icons/social.png");
     background-position: -66px 0;
     background-repeat: no-repeat;
 }

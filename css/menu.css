@@ -78,7 +78,7 @@ Menu
 #sub_menu .sub_sub_menu .level2_act a,
 #sub_menu .sub_sub_menu .level2_act a:hover{
 	background-color:#FFF;
-	background-image: url("images/menu_bg_level1.png");
+	background-image: url("../images/menu_bg_level1.png");
     background-position: 10px 6px;
     background-repeat: no-repeat;
     padding:3px 10px 3px 20px;
@@ -115,7 +115,7 @@ Menu
 #sub_menu .level2_act .sub_sub_sub_menu .level3 a:hover,
 #sub_menu .level2_act .sub_sub_sub_menu .level3_act a,
 #sub_menu .level2_act .sub_sub_sub_menu .level3_act a:hover{
-	background-image: url("images/menu_bg_level2.png");
+	background-image: url("../images/menu_bg_level2.png");
 	color: #333333;
     background-position: 25px 7px;
     background-repeat: no-repeat;
@@ -157,7 +157,7 @@ Menu
     padding:2px 20px 2px 50px;
 	line-height:12px;	
 	border:none;	
-	background-image: url("images/menu_bg_level3.png");
+	background-image: url("../images/menu_bg_level3.png");
 	color: #333333;
 }
 #sub_menu .level3_act .level4_last{

@@ -7,7 +7,7 @@
 	width: 100%;
 	height: 50px;
 	margin-top: 10px;
-	background-image: url(images/events_loader.gif);
+	background-image: url(../images/events_loader.gif);
 	background-position: top center;
 	background-repeat: no-repeat;	
 }
@@ -90,7 +90,7 @@ SEARCH BOX
 #event_search input[type="submit"]{
 	float:left;
 	margin-left:120px;
-	background-image: url("images/bg_button.png");
+	background-image: url("../images/bg_button.png");
     background-position: 0 0;
     background-repeat: repeat-x;
     border: medium none;
@@ -294,7 +294,7 @@ Single View
 	text-decoration:none !important;
 	width:auto;
 	
-	background-image: url("images/bg_button.png");
+	background-image: url("../images/bg_button.png");
     background-position: 0 0;
     background-repeat: repeat-x;
 }
