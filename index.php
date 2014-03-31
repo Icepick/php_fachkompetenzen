@@ -18,11 +18,20 @@
 
 <div id="main">
 	<div id="layout">
+    <!-- start Header -->
     	<div id="header">HEADER
 			<div id="logo">
 				<a target="_blank" href="http://www.htwchur.ch"><img src="/images/logo.png" width="382" height="69" border="0" alt="Home"></a>
 			</div>
+            <div id="header_content">
+                <div id="search_button_top" onclick="var searchbox = document.getElementById('search_box'); if(searchbox.style.display == 'inline') { <br>
+    searchbox.style.display = 'none'; } else { searchbox.style.display = 'inline'; }">
+    			</div>
+     		
+            </div>
+            
 		</div>
+    <!-- end Header -->
 		<div id="navigation_top">NAVIGATION</div>
 		<div id="content">
 		
