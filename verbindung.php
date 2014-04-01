@@ -1,8 +1,14 @@
 <?php
 // Wichtigste Verbindungsparameter als Variablen
+<<<<<<< HEAD
 $host = "10.0.254.77"; 
 $db = "ets817";
 $user = "ets817";
+=======
+$host = "localhost"; 
+$db = "forschungskompetenzen";
+$user = "root";
+>>>>>>> FETCH_HEAD
 $pwd = "";
 $tbl = "tbl_pokemon3";
 $tblf = "tbl_farbe";
