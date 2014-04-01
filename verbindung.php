@@ -1,7 +1,7 @@
 <?php
 // Wichtigste Verbindungsparameter als Variablen
 $host = "localhost"; 
-$db = "pokemon";
+$db = "forschungskompetenzen";
 $user = "root";
 $pwd = "";
 $tbl = "tbl_pokemon3";

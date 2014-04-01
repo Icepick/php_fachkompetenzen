@@ -1,3 +1,44 @@
+<?php
+	require_once("verbindung.php");
+	
+	if(isset($_GET['start']))
+	{
+		$start = $_GET['start'];
+	}
+	else
+	{
+		$start = 0;
+	}
+	$zeilen = 4;
+ 
+	//$sql = "SELECT * FROM ".$tbl." ORDER BY name ASC LIMIT ".$start.", ".$zeilen.";"; // ASC beginnt mit 1. Item, DESC mit letztem
+	$sql = "SELECT * FROM ".$tbl.", ".$tblf;
+	$sql .= " WHERE ".$tbl.".energie = ".$tblf.".id";
+	$sql .= " ORDER BY ".$tbl.".name ASC LIMIT ".$start.", ".$zeilen;
+	
+	$sql2 = "SELECT * FROM ".$tbl.", ".$tblf;
+	$sql2 .= " WHERE ".$tbl.".energie = ".$tblf.".id ";
+	
+	$query = mysqli_query($verb, $sql) or die("Fehler: ".mysqli_error($verb));
+	$query2 = mysqli_query($verb, $sql2) or die("Fehler: ".mysqli_error($verb));
+	
+	$row = mysqli_fetch_assoc($query);
+	// Verbindungsprobleme anzeigen
+	echo mysqli_error($verb);
+	
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
 <html>
 <head>
@@ -45,9 +86,9 @@
                           <td rowspan="1"><strong>Name / Vorname</strong></td><br>
 						  <td rowspan="1"><strong>Kategorie</strong></td>						  <td rowspan="1"><strong>Spezifikation</strong></td>
                           <td rowspan="1"><strong>Institut</strong></td
-                          <td rowspan="1"><strong>Kontakt</strong></td
+                          ><td rowspan="1"><strong>Kontakt</strong></td
                           
-                          </tr>         
+                          ></tr>         
                           <tr><td rowspan="1"></td>
                           <td rowspan="1">test</td><td></td></tr><tr>
                           <td rowspan="1">test</td>
