@@ -1,8 +1,8 @@
 <?php
 // Wichtigste Verbindungsparameter als Variablen
-$host = "localhost"; 
-$db = "pokemon";
-$user = "root";
+$host = "10.0.254.77"; 
+$db = "ets817";
+$user = "ets817";
 $pwd = "";
 $tbl = "tbl_pokemon3";
 $tblf = "tbl_farbe";
