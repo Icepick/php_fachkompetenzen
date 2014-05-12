@@ -51,7 +51,8 @@ $check = '';
 // $sql5 wählt Namen der Kategorien für die Checkboxen --> search.php
 
 	function sqlSearch1() {
-		$sql  = "SELECT name FROM kategorie;";
+		$sql  = "SELECT id, name FROM `kategorie` ";
+		$sql .= "ORDER BY name ASC;";
 		return $sql;
 	}
 	
