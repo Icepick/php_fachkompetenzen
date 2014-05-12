@@ -22,7 +22,7 @@ Footer
 	margin:0 auto;
 	width:100%;
 	height:auto;
-	#background-image:url(../images/bg_footer2.png);
+	background-image:url(../images/bg_footer2.png);
 	background-repeat:repeat-x;
 	margin-top: 80px;
 }

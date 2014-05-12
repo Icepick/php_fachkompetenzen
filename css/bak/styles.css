@@ -1,4 +1,4 @@
-﻿* {}
+* {}
 
 body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
     margin: 0;
@@ -22,7 +22,6 @@ table.contenttable {
 	border-spacing: 0px;
 	padding: 0px;
 	background-color: #EEEEEE;
-	font-size: 15px;
 }
 
 table.contenttable td,th {
@@ -91,7 +90,7 @@ body {
 h7 {
     color: #333333;
     font-family: rokkitt,Arial,Helvetica,sans-serif;
-    font-size: 22px;
+    font-size: 28px;
 }
 h1 {
     color: #333333;
@@ -172,7 +171,7 @@ a:hover, a:hover .more, #content_right a:hover {
     float: left;
     height: 70px;
     margin-left: 10px;
-    margin-top: -15px;
+    margin-top: 25px;
     width: 335px;
 }
 #header #header_content {
@@ -314,7 +313,7 @@ a:hover, a:hover .more, #content_right a:hover {
 
 #navigation_top {
     float: left;
-    height: 32px;
+    height: 50px;
     width: 990px;
 }
 #header_image {
@@ -357,7 +356,7 @@ a:hover, a:hover .more, #content_right a:hover {
 #content_center {
     float: left;
     padding: 30px 9px 10px 5px;
-    width: 590px;
+    width: 490px;
 	vertical-align:central;
 }
 #content_center.largeContent {
