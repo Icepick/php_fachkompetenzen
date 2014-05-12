@@ -8,7 +8,7 @@
 <form  name="form1" method="post" action="search-results.php"  id="searchform"> 
 <table class="contenttable">
 
-<h2>Kategorie auswählen</h2>
+<h2>Kategorie auslachen</h2>
 
 <? foreach ($result_sql5 as $kategorienliste) : ?>
 <tr>
