@@ -1,5 +1,8 @@
 
 <?php
+//1) Verbindung zu MySQL öffnen
+$verb = openMySqlConnection();
+
 
 if(!empty($_POST['checkbox'])) {
 	echo "Gewählte Kategorien:";
@@ -21,21 +24,27 @@ if(!empty($_POST['checkbox'])) {
 <div id="komptable"> 
 
 <form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
-<table class="contenttable">
 
 <h2>Kategorie auswählen</h2>
+<table class="contenttable">
 
-<? foreach ($result_sql5 as $kategorienliste) : ?>
+<?php 
+	//2) SQL Abfrage ausführen
+	$result = executeSqlQuery($verb, sqlSearch1());
+?>
+	
+<?php while ($search = mysqli_fetch_array($result)) { ?>
+
 <tr>
 <td>
 <label>
-<input type="checkbox" name="checkbox[<? $kategorienliste['name']; ?>]" 
-id="checkbox[<? $kategorienliste['name']; ?>]" value="<? echo $kategorienliste['name']; ?>"> 
-&nbsp;<? echo $kategorienliste['name']; ?>
+	<input type="checkbox" name="checkbox[<?php $search['name']; ?>]" 
+	id="checkbox[<?php $search['name']; ?>]" value="<?php echo $search['name']; ?>"> 
+	&nbsp;<?php echo $search['name']; ?>
 </label>
 </td>
 </tr>
-<? endforeach; ?>             
+<?php } ?>             
          
 </table> 
 
@@ -53,6 +62,14 @@ id="checkbox[<? $kategorienliste['name']; ?>]" value="<? echo $kategorienliste['
 	</div>
     </div>
 
+	
+<?php
+	//4) Verbindung zu MySQL schliessen
+	closeMySqlConnection($verb);
+?>
+	
+	
+	
 <!--  
 <script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>

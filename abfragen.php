@@ -50,7 +50,10 @@ $check = '';
 
 // $sql5 wählt Namen der Kategorien für die Checkboxen --> search.php
 
-	$sql5 = "SELECT name FROM ".$tblk." ";
+	function sqlSearch1() {
+		$sql  = "SELECT name FROM kategorie;";
+		return $sql;
+	}
 	
 // $sql6 gibt das Suchergebnis aus --> search-results.php
 
