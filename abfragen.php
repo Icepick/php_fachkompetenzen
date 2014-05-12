@@ -6,10 +6,10 @@ require_once("verbindung.php");
 $eingabe = trim(@$_GET['eingabe']);
 $check = '';
 
-	$tbli = "institut";
-	$tblm = "mitarbeiter";
-	$tbls = "spezifikation";
-	$tblk = "kategorie";
+$tbli = "institut";
+$tblm = "mitarbeiter";
+$tbls = "spezifikation";
+$tblk = "kategorie";
 
 
 //////////    ABFRAGEN       ///////////
@@ -28,7 +28,45 @@ $check = '';
 	
 	
 // $sql2 
+	function sqlSearch2() {
+	
+$tbli = "institut";
+$tblm = "mitarbeiter";
+$tbls = "spezifikation";
+$tblk = "kategorie";
+	
+$checkboxStr = "";
 
+	
+	if(!empty($_POST['checkbox'])) {
+	$count = count($_POST['checkbox']);
+	$i = 0;
+	$eingabe = trim(@$_GET['eingabe']);
+
+
+ // Überprüfen, ob Eintrag in gewählter Kategorie
+
+	$sql = "SELECT DISTINCT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
+	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
+	$sql .= " ".$tblk.".name AS kategorienname,";
+	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
+	$sql .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls." ";
+	$sql .= " WHERE ".$tblk.".ID = ".$tbls.".kategorienID ";
+	$sql .= " AND ".$tbls.".mitarbeiterID = ".$tblm.".ID";
+	$sql .= " AND ".$tblm.".institutsID = ".$tbli.".ID ";
+
+	if(strlen($checkboxStr) > 0)
+	$sql .= " AND ".$tblk.".name IN ('".$checkboxStr."') ";
+	
+	if(strlen($eingabe) > 0)
+
+	$sql .= " AND ".$tblm.".name IN ('".$eingabe."') ";
+	
+	
+	return $sql;
+
+}
+}
 	
 // $sql3 wählt den Kategoriennamen der Suchresultate
 

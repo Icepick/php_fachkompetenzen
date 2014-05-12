@@ -20,13 +20,13 @@ form {
 table.contenttable {
 	border: 1px solid #888888;
 	border-spacing: 0px;
-	padding: 0px;
+	padding: 3px;
 	background-color: #EEEEEE;
 	font-size: 15px;
 }
 
 table.contenttable td,th {
-	padding: 3px;
+	padding: 5px;
 	border: 1px solid #DDDDDD;
 }
 
