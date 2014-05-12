@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 <?php
 
 if(!empty($_POST['checkbox'])) {
-	echo "Gewählte Kategorien:";
+	echo "GewÃ¤hlte Kategorien:";
     foreach($_POST['checkbox'] as $check) {
             echo "<br />";
             echo $check;
@@ -13,9 +13,8 @@ if(!empty($_POST['checkbox'])) {
 
 
 	<div id="content_center_top">
-=======
+
 <div id="content_center_top">
->>>>>>> 0a6b60054df91367463c27e9d57cdeac24a8d3b9
                 
 <h1>Fachkompetenzen suchen</h1>
  
