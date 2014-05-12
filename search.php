@@ -1,3 +1,15 @@
+<?php
+
+if(!empty($_POST['checkbox'])) {
+	echo "Gewählte Kategorien:";
+    foreach($_POST['checkbox'] as $check) {
+            echo "<br />";
+            echo $check;
+    }
+} 
+
+?>
+
 
 	<div id="content_center_top">
                 
@@ -5,7 +17,7 @@
  
 <div id="komptable"> 
 
-<form  name="form1" method="post" action="search-results.php"  id="searchform"> 
+<form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
 <table class="contenttable">
 
 <h2>Kategorie auslachen</h2>
