@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 if(!empty($_POST['checkbox'])) {
@@ -12,6 +13,9 @@ if(!empty($_POST['checkbox'])) {
 
 
 	<div id="content_center_top">
+=======
+<div id="content_center_top">
+>>>>>>> 0a6b60054df91367463c27e9d57cdeac24a8d3b9
                 
 <h1>Fachkompetenzen suchen</h1>
  
@@ -20,7 +24,7 @@ if(!empty($_POST['checkbox'])) {
 <form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
 <table class="contenttable">
 
-<h2>Kategorie auslachen</h2>
+<h2>Kategorie auswählen</h2>
 
 <? foreach ($result_sql5 as $kategorienliste) : ?>
 <tr>
