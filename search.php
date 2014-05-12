@@ -45,6 +45,19 @@ if(!empty($_POST['checkbox'])) {
 </tr>
 <?php } ?>             
          
+</div>
+
+<div id="suchfunktion">
+
+  <h2>Suche verfeinern</h2>
+  
+    <input  id="tags" type="text" name="eingabe"> 
+    <input  type="submit" name="submit" value="Suche"> 
+    
+</form>    
+      
+	</div>
+	
 </table> 
 
 	</div>
