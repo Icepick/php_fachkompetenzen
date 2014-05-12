@@ -31,7 +31,6 @@ function openMySqlConnection() {
 }
 ?>
 
-
 <?php
 //Abfrage durchführen
 function executeSqlQuery($verb, $sql) {

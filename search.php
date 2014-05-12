@@ -2,16 +2,6 @@
 <?php
 //1) Verbindung zu MySQL öffnen
 $verb = openMySqlConnection();
-
-
-if(!empty($_POST['checkbox'])) {
-	echo "Gewählte Kategorien:";
-    foreach($_POST['checkbox'] as $check) {
-            echo "<br />";
-            echo $check;
-    }
-} 
-
 ?>
 
 <div id="content_center"> 
@@ -31,7 +21,7 @@ if(!empty($_POST['checkbox'])) {
 	//2) SQL Abfrage ausführen
 	$result = executeSqlQuery($verb, sqlSearch1());
 ?>
-	
+
 <?php while ($search = mysqli_fetch_array($result)) { ?>
 
 <tr>
