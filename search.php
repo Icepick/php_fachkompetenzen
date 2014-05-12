@@ -2,7 +2,60 @@
 <?php
 //1) Verbindung zu MySQL öffnen
 $verb = openMySqlConnection();
+<<<<<<< HEAD
+=======
+
+
+if(!empty($_POST['checkbox'])) {
+	echo "Gewählte Kategorien:";
+    //checkbox ausgeben
+	foreach($_POST['checkbox'] as $check) {
+            echo "<br />";
+            echo $check;
+    }
+	
+	//TODO: SQL Abfragen für Suche (SQL in abfrage.php & Abfrage wie unten)
+} 
+
+>>>>>>> FETCH_HEAD
 ?>
+
+<?php
+//TODO: Code für das Anzeige von Suchresultat
+if(false) { //Vorschau mit TRUE
+ ?>
+<table width="600" class="contenttable">
+	<tr>
+		<td rowspan="1"><strong>Name / Vorname</strong></td>
+		<td rowspan="1"><strong>Kategorie</strong></td>		 		
+		<td rowspan="1"><strong>Spezifikation</strong></td>
+		<td rowspan="1"><strong>Institut</strong></td>
+		<td rowspan="1"><strong>Kontakt</strong></td>
+	</tr>
+	<tr>
+	<td rowspan="1"> 
+			<? echo $ergebnis6['vorname']; ?>&nbsp<? echo $ergebnis6['nachname']; ?>
+
+	</td>
+	<td rowspan="1"> 
+			<? foreach ($result_sql6 as $kategorienausgabe) : ?>
+			<? echo $kategorienausgabe['kategorienname']; ?>
+			<? endforeach; ?></td>
+	<td rowspan="1"> 
+			<? foreach ($result_sql6 as $spezifikationenausgabe) : ?>
+			<? echo $spezifikationenausgabe['spezifikationsname']; ?>
+			<? endforeach; ?>
+	</td>
+	<td rowspan="1"> 
+			<? echo $ergebnis6['institutsname']; ?>
+	</td>
+	<td rowspan="1"> 
+			<? echo $ergebnis6['mail']; ?>
+	</td>
+	</tr>
+</table>
+<?php } ?>
+
 
 <div id="content_center"> 
   
