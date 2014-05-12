@@ -11,10 +11,9 @@ if(!empty($_POST['checkbox'])) {
 
 ?>
 
-
+<div id="content_center"> 
+  
 	<div id="content_center_top">
-
-<div id="content_center_top">
                 
 <h1>Fachkompetenzen suchen</h1>
  
@@ -39,17 +38,6 @@ id="checkbox[<? $kategorienliste['name']; ?>]" value="<? echo $kategorienliste['
          
 </table> 
 
-</div>
-
-<div id="suchfunktion">
-
-  <h2>Suche verfeinern</h2>
-  
-    <input  id="tags" type="text" name="eingabe"> 
-    <input  type="submit" name="submit" value="Suche"> 
-    
-</form>    
-      
 	</div>
     </div>
 

@@ -60,7 +60,7 @@ $check = '';
 // $result_sql2 = mysqli_query($verb, $sql2) or die("Fehler: ".mysqli_error($verb));
 // $result_sql3 = mysqli_query($verb, $sql3) or die("Fehler: ".mysqli_error($verb));
 //$result_sql4 = mysqli_query($verb, $sql4) or die("Fehler: ".mysqli_error($verb));
-//$result_sql5= mysqli_query($verb, $sql5) or die("Fehler: ".mysqli_error($verb));
+// $result_sql5= mysqli_query($verb, $sql5) or die("Fehler: ".mysqli_error($verb));
 
 
 
