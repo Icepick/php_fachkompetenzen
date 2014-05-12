@@ -1,5 +1,4 @@
-
-	<div id="content_center_top">
+<div id="content_center_top">
                 
 <h1>Fachkompetenzen suchen</h1>
  
