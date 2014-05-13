@@ -36,6 +36,7 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
 		<?php 
 			//2) SQL Abfrage ausführen
 			$result = executeSqlQuery($verb, sqlProfil4(14));
+			//var_dumb($result);
 		?>
 	
 		<?php while ($profil = mysqli_fetch_array($result)) { ?>

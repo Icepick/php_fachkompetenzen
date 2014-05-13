@@ -84,7 +84,7 @@ $check = '';
 	
 // Profil: SQL Query für das hinzufügen neuer Spezifikationen
 	function sqlProfil3($kategorieId, $spezifikation, $mitarbeiterId) {	
-		$sql  = "INSERT INTO spezifikation (spezname, kategorienID, mitarbeiterID)";
+		$sql  = "INSERT INTO spezifikation (spezname, kategorienID, mitarbeiterID) ";
 		$sql .= "VALUES ('$spezifikation', '$kategorieId', '$mitarbeiterId')";
 		return $sql;
 	}
@@ -97,8 +97,10 @@ $check = '';
 		return $sql;
 	}
 	
-
-
-
+// Profil:
+	function sqlProfil5() {
+	
+	}
+	
 
 ?>
