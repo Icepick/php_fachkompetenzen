@@ -7,7 +7,7 @@ function openMySqlConnection() {
 	$db = "ets817";
 	$user = "root";
 	$pwd = "";
-	
+
 	//Verbindung mit MySQL erstellen
 	$verb = mysqli_connect($host, $user, $pwd, $db);
 
@@ -29,6 +29,7 @@ function openMySqlConnection() {
 	
 	return $verb;
 }
+
 ?>
 
 <?php
