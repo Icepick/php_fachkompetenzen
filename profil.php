@@ -31,7 +31,7 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
 	 
 	<h1>Mein Profil</h1> 
  
-	<table id="profiltable" width="600" class="contenttable" style="float:left; width:260px">
+	<table id="profiltable" class="contenttable" style="float:left;">
 
 		<?php 
 			//2) SQL Abfrage ausführen
@@ -63,7 +63,7 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
     
 	
     <form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
-    <table id="profiltable" class="contenttable" style="float:right; width:320px">
+    <table id="profiltable" class="contenttable">
 
 		<tr>
             <td rowspan="1"><strong>Kategorie</strong></td>		 		

@@ -3,7 +3,6 @@
 //1) Verbindung zu MySQL öffnen
 $verb = openMySqlConnection();
 // <<<<<<< HEAD
-// =======
 
 	
 //TODO: SQL Abfragen für Suche (SQL in abfrage.php & Abfrage wie unten)
@@ -11,8 +10,6 @@ $verb = openMySqlConnection();
 
 // >>>>>>> FETCH_HEAD
 ?>
-
-<!-- //TODO: Code für das Anzeige von Suchresultat -->
 
 <?php 
 
@@ -86,25 +83,26 @@ if(!empty($_POST['checkbox'])) {
 
 
 
-// SUCHE //
+//////////////// SUCHE //////////////////
+
 if(strlen($checkboxStr) == 0) { ?> 
 
-
-<div id="content_center"> 
-  
-	<div id="content_center_top">
-	
-<p color:#d43f3a;".">Bitte wählen Sie ein Kriterium aus.</p><br />
-                
+<div id="content_center_top"> 
+  	                
 <h1>Fachkompetenzen suchen</h1>
  
-<div id="komptable"> 
+ <div id="content_center"> 
 
-<form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
+<div id="komptable"> 
 
 <h2>Kategorie auswählen</h2>
 
-<table width:"600" class="contenttable">
+<p color:#d43f3a;".">Bitte wählen Sie eine Kategorie aus.</p><br />
+
+
+<form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
+
+<table id="searchtable">
 
 <?php 
 	//2) SQL Abfrage ausführen
@@ -116,29 +114,27 @@ if(strlen($checkboxStr) == 0) { ?>
 <tr>
 <td>
 <label>
-	<input type="checkbox" name="checkbox[<?php $search['name']; ?>]" 
+	<input class="checkbox" type="checkbox" name="checkbox[<?php $search['name']; ?>]" 
 	id="checkbox[<?php $search['name']; ?>]" value="<?php echo $search['name']; ?>"> 
 	&nbsp;<?php echo $search['name']; ?>
 </label>
 </td>
 </tr>
 <?php } ?>             
-         
+        </table> 
+
 </div>
 
 <div id="suchfunktion">
 
   <h2>Suche verfeinern</h2>
   
-    <input  id="tags" type="text" name="eingabe"> 
-    <input  type="submit" name="submit" value="Suche"> 
+    <input  id="tags" type="text" name="eingabe">  <br/>
+    <input  type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
 
 </div>
 
 </form>    
-      
-	
-</table> 
 
 	</div>
     </div>
@@ -149,9 +145,8 @@ if(strlen($checkboxStr) == 0) { ?>
 	closeMySqlConnection($verb);
 ?>
 	
-	
-	
-<!--  
+<!-- Autokorrektur -->
+
 <script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script>
@@ -159,7 +154,7 @@ if(strlen($checkboxStr) == 0) { ?>
 		var availableTags = [
 			"CSS",
 			"HTML",
-			"Sprechtraining",
+			"Chinesisch",
 			"BASIC",
 			"C",
 			"C++",
@@ -178,10 +173,10 @@ if(strlen($checkboxStr) == 0) { ?>
 			"Python",
 			"Ruby",
 			"Scala",
-			"Scheme"
+			"Scheme" // beim letzten Wert kein Komma mehr!
 		];
 		$( "#tags" ).autocomplete({
 			source: availableTags
 		});
 	});
-	</script> -->
+	</script> 
