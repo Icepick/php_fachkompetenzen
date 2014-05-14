@@ -84,6 +84,9 @@ if(!empty($_POST['checkbox'])) {
 
 <?php
 
+
+
+// SUCHE //
 if(strlen($checkboxStr) == 0) { ?> 
 
 
@@ -129,10 +132,11 @@ if(strlen($checkboxStr) == 0) { ?>
   
     <input  id="tags" type="text" name="eingabe"> 
     <input  type="submit" name="submit" value="Suche"> 
-    
+
+</div>
+
 </form>    
       
-	</div>
 	
 </table> 
 
