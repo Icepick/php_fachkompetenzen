@@ -6,7 +6,7 @@ body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 }
 
 #profiltable {
-	width: 100%;
+	width: 230px;
 	margin-right: 10px;
 }
 
@@ -398,8 +398,8 @@ a:hover, a:hover .more, #content_right a:hover {
 #content_center {
     float: left;
     padding: 30px 9px 10px 5px;
-    width: 700px;
-	vertical-align:central;	
+    width: 590px;
+	vertical-align:central;
 }
 #content_center.largeContent {
     float: left;
