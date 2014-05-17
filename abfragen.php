@@ -135,9 +135,20 @@ $checkboxStr = "";
 		return $sql;
 	}
 	
-// Profil:
-	function sqlProfil5() {
+// Profil: SQL Query für das auslesen der spezifikationen eines mitarbeiters
+	function sqlProfil5($id) {
+		$sql  = "SELECT s.id, s.spezname, s.mitarbeiterId, k.name FROM `spezifikation` s ";
+		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
+		$sql .= "WHERE s.mitarbeiterId = " . $id . " ";
+		$sql .= "ORDER BY s.id DESC;";
+		return $sql;
+	}
 	
+// Profil: SQL Query für das entfernen einer Spezifikation
+	function sqlProfil6($spezifikationId) {	
+		$sql  = "DELETE FROM spezifikation ";
+		$sql .= "WHERE id = " . $spezifikationId . " ;";
+		return $sql;
 	}
 	
 
