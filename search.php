@@ -4,7 +4,14 @@
 $verb = openMySqlConnection();
 ?>
 
-<?php 
+<?php
+
+//Volltextsuche
+if(!empty($_POST['eingabe'])) {
+	$eingabe = $_POST['eingabe'];
+}
+
+
 
 $checkboxStr = "";
 
@@ -23,7 +30,7 @@ if(!empty($_POST['checkbox'])) {
             
             if($i < $count)
 	            $checkboxStr .= ", ";
-    } 
+    }
     
 ?>
     
@@ -128,17 +135,21 @@ if(strlen($checkboxStr) == 0) { ?>
 <div id="suchfunktion">
 	<br/>
 	<h2>Suchergebnis</h2>
-	<h3>DEMO: Statische Suche nach CSS</h3>
   
     <?php
-		//DEMO Textsuche --> suche nach CSS
-		$begriff = "CSS";
-		$r = executeSqlQuery($verb, ultimateTextSearch($begriff));
-		while ($te = mysqli_fetch_array($r)) {
-			echo "<strong>Suchbegriff " . $begriff . " wurde gefunden in:</strong><br/>";
-			echo "<strong>Institut/Person:</strong> " .  $te["institutname"] . " | " . $te["vorname"] . " " . $te["nachname"] . " | " . $te["mailadresse"] . "<br/>";
-			echo "<strong>Kategorie/Spezifikation:</strong> " . $te["kategoriename"] . " | " . $te["spezname"] . "<br/>";
-			echo "<br/><br/>";
+		if(isset($eingabe)) {
+			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe));
+			echo "<strong>Suchbegriff: " . $eingabe . "</strong><br/><br/>";
+			while ($te = mysqli_fetch_array($result)) {
+				echo "<div style='border: 1px solid #000; padding:10px'>";
+				echo "<strong>Person:</strong> " . $te["vorname"] . " " . $te["nachname"] . "<br/>";
+				echo "<strong>EMail:</strong> " . $te["mailadresse"] . "<br/>";
+				echo "<strong>Insitut:</strong> " . $te["institutname"] . "<br/>";
+				echo "<strong>Kategorie:</strong> " . $te["kategoriename"] . "<br/>";
+				echo "<strong>Spezifikation:</strong> " . $te["spezname"];				
+				echo "</div>";
+				echo "<br/><br/>";
+		}
 }
 	
 	?>
