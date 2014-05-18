@@ -27,15 +27,49 @@ $tblk = "kategorie";
 	$sql .= " ORDER BY ".$tblm.".name ";
 	
 	
+	
+	function ultimateTextSearch($suchbegriff) {
+		$sql  = "SELECT s.spezname, k.name AS 'kategoriename', m.vorname, m.name AS 'nachname', m.mailadresse, i.name AS 'institutname' ";
+		$sql .= "FROM `spezifikation` s ";
+		$sql .= "INNER JOIN `kategorie` k ON s.kategorienId = k.id ";
+		$sql .= "INNER JOIN `mitarbeiter` m ON s.mitarbeiterId = m.id ";
+		$sql .= "INNER JOIN `institut` i ON m.institutsId = i.Id ";
+		$sql .= "WHERE s.spezname LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR m.vorname LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR m.name LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR m.mailadresse LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR k.name LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR i.name LIKE '%". $suchbegriff . "%'; ";
+		return $sql;
+	
+	
+		// Zum testen in MySQL, suche nach CSS:
+		/*
+		SELECT * FROM `spezifikation` s
+		INNER JOIN `kategorie` k ON s.kategorienId = k.id
+		INNER JOIN `mitarbeiter` m ON s.mitarbeiterId = m.id
+		INNER JOIN `institut` i ON m.institutsId = i.Id
+		WHERE
+		s.spezname LIKE '%CSS%'
+		OR m.vorname LIKE '%CSS%'
+		OR m.name LIKE '%CSS%'
+		OR m.mailadresse LIKE '%CSS%'
+		OR k.name LIKE '%CSS%'
+		OR i.name LIKE '%CSS%';
+		*/
+	
+	}
+	
+	
 // $sql2 
 	function sqlSearch2() {
 	
-$tbli = "institut";
-$tblm = "mitarbeiter";
-$tbls = "spezifikation";
-$tblk = "kategorie";
-	
-$checkboxStr = "";
+	$tbli = "institut";
+	$tblm = "mitarbeiter";
+	$tbls = "spezifikation";
+	$tblk = "kategorie";
+		
+	$checkboxStr = "";
 
 	
 	if(!empty($_POST['checkbox'])) {
@@ -140,7 +174,7 @@ $checkboxStr = "";
 		$sql  = "SELECT s.id, s.spezname, s.mitarbeiterId, k.name FROM `spezifikation` s ";
 		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
 		$sql .= "WHERE s.mitarbeiterId = " . $id . " ";
-		$sql .= "ORDER BY s.id DESC;";
+		$sql .= "ORDER BY k.name DESC;";
 		return $sql;
 	}
 	

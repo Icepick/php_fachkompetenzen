@@ -88,48 +88,8 @@ if(isset($_POST['delete'])) {
 			<br/>
 		</div>
 	
-	<!--
 	
-		<div style="float:left; width:50%; overflow: hidden">
-	
-		<h2>Spezifikation</h2> 
-		<form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
-		<table id="profiltable" class="contenttable">
 
-			<tr>
-				<td rowspan="1"><strong>Kategorie</strong></td>		 		
-				<td rowspan="1">
-				
-				<select name="Kategorie" style="width:100%;">
-					<?php 
-						//2) SQL Abfrage ausführen
-						$result = executeSqlQuery($verb, sqlProfil1());	
-
-						//3) HTML Code mit Ausgabe von SQL Daten
-						while ($row = mysqli_fetch_array($result)) {
-							echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
-						}	
-					?>
-				</select>
-				
-				</td>
-			</tr>
-			<tr>
-				<td rowspan="1"><strong>Spezifikation</strong></td>
-				<td rowspan="1" style="padding-right:8px;"><input type="text" name="Spezifikation" placeholder="Spezifikation" value="" style="width:100%;"></td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td><input type="submit" value="Speichern" style="cursor:pointer; color: #FFF; background-color: #4cae4c; border: 0px; padding:5px;"></td>
-			</tr>       
-			 
-		</table> 
-		</form>
-	
-		<br/>
-	</div>
-	-->
-	
 	<h2>Spezifikation</h2>
 	
 		<form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
@@ -174,15 +134,16 @@ if(isset($_POST['delete'])) {
 					$result = executeSqlQuery($verb, sqlProfil5($mitarbeiter));	
 
 					//3) HTML Code mit Ausgabe von SQL Daten
-					while ($row = mysqli_fetch_array($result)) {
+					$c = 1; while ($row = mysqli_fetch_array($result)) {
 						//echo var_dump($row);
 						echo "<tr>";
-						echo "<td>" . $row['id'] . "</td>";
+						echo "<td>" . $c . "</td>";
 						echo "<td>" . $row['name'] . "</td>";
 						echo "<td>" . $row['spezname'] . "</td>";
 						echo "<td style='width:20px;'><input type='submit' name='delete[".$row['id']."]' value='Entfernen' style='cursor:pointer; width:70px; color: #FFF; background-color: #d43f3a; border: 0px; padding:5px;'></td>";
 						echo "</tr>";
-					}	
+						$c++;
+					}
 				?>
 				
 				</tbody>

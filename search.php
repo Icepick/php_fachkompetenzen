@@ -2,13 +2,6 @@
 <?php
 //1) Verbindung zu MySQL öffnen
 $verb = openMySqlConnection();
-// <<<<<<< HEAD
-
-	
-//TODO: SQL Abfragen für Suche (SQL in abfrage.php & Abfrage wie unten)
-
-
-// >>>>>>> FETCH_HEAD
 ?>
 
 <?php 
@@ -34,7 +27,7 @@ if(!empty($_POST['checkbox'])) {
     
 ?>
     
-<table width="600" class="contenttable">
+<table width="" class="contenttable">
 
 <tr>
     <td rowspan="1"><strong>Name / Vorname</strong></td>
@@ -90,8 +83,7 @@ if(strlen($checkboxStr) == 0) { ?>
 <div id="content_center_top"> 
   	                
 <h1>Fachkompetenzen suchen</h1>
- 
- <div id="content_center"> 
+
 
 <div id="komptable"> 
 
@@ -102,42 +94,62 @@ if(strlen($checkboxStr) == 0) { ?>
 
 <form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
 
-<table id="searchtable">
+<div id="searchtable">
+	<?php 
+		//2) SQL Abfrage ausführen
+		$result = executeSqlQuery($verb, sqlSearch1());
+	?>
 
-<?php 
-	//2) SQL Abfrage ausführen
-	$result = executeSqlQuery($verb, sqlSearch1());
-?>
+	<ul>
+	<?php while ($search = mysqli_fetch_array($result)) { ?>
 
-<?php while ($search = mysqli_fetch_array($result)) { ?>
+	<li>
+	<label>
+		<input class="checkbox" type="checkbox" name="checkbox[<?php $search['name']; ?>]" 
+		id="checkbox[<?php $search['name']; ?>]" value="<?php echo $search['name']; ?>"> 
+		&nbsp;<?php echo $search['name']; ?>
+	</label>
+	</li>
 
-<tr>
-<td>
-<label>
-	<input class="checkbox" type="checkbox" name="checkbox[<?php $search['name']; ?>]" 
-	id="checkbox[<?php $search['name']; ?>]" value="<?php echo $search['name']; ?>"> 
-	&nbsp;<?php echo $search['name']; ?>
-</label>
-</td>
-</tr>
-<?php } ?>             
-        </table> 
+	<?php } ?>     
+	</ul>
+</div>
+
+
+<div id="suchfunktion">
+	<br/>
+	<h2>Suche verfeinern</h2>
+  
+    <input id="tags" class="search" type="text" name="eingabe">
+    <input type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
 
 </div>
 
 <div id="suchfunktion">
-
-  <h2>Suche verfeinern</h2>
+	<br/>
+	<h2>Suchergebnis</h2>
+	<h3>DEMO Statische</h3>
   
-    <input  id="tags" type="text" name="eingabe">  <br/>
-    <input  type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
+    <?php
+		//DEMO Textsuche --> suche nach CSS
+		$begriff = "CSS";
+		$r = executeSqlQuery($verb, ultimateTextSearch($begriff));
+		while ($te = mysqli_fetch_array($r)) {
+			echo "<strong>Suchbegriff " . $begriff . " wurde gefunden in:</strong><br/>";
+			echo "<strong>Institut/Person:</strong> " .  $te["institutname"] . " | " . $te["vorname"] . " " . $te["nachname"] . " | " . $te["mailadresse"] . "<br/>";
+			echo "<strong>Kategorie/Spezifikation:</strong> " . $te["kategoriename"] . " | " . $te["spezname"] . "<br/>";
+			echo "<br/><br/>";
+}
+	
+	?>
 
 </div>
 
-</form>    
+</form>   
 
-	</div>
-    </div>
+
+</div>
+
 	
 <?php
 }
