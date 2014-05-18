@@ -128,7 +128,7 @@ if(strlen($checkboxStr) == 0) { ?>
 <div id="suchfunktion">
 	<br/>
 	<h2>Suchergebnis</h2>
-	<h3>DEMO Statische</h3>
+	<h3>DEMO: Statische Suche nach CSS</h3>
   
     <?php
 		//DEMO Textsuche --> suche nach CSS
