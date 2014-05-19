@@ -170,16 +170,25 @@ $tblk = "kategorie";
 	}
 	
 // Profil: SQL Query für das auslesen der spezifikationen eines mitarbeiters
-	function sqlProfil5($id) {
+	function sqlProfil5($mitarbeiterId) {
+		$sql  = "SELECT DISTINCT s.mitarbeiterId, k.id, k.name FROM `spezifikation` s ";
+		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
+		$sql .= "WHERE s.mitarbeiterId = " . $mitarbeiterId . " ";
+		$sql .= "ORDER BY k.name ASC;";
+		return $sql;
+	}
+	
+	// Profil: SQL Query für das auslesen der spezifikationen eines mitarbeiters
+	function sqlProfil6($mitarbeiterId, $kategorieId) {
 		$sql  = "SELECT s.id, s.spezname, s.mitarbeiterId, k.name FROM `spezifikation` s ";
 		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
-		$sql .= "WHERE s.mitarbeiterId = " . $id . " ";
-		$sql .= "ORDER BY k.name DESC;";
+		$sql .= "WHERE s.mitarbeiterId = " . $mitarbeiterId . " AND s.kategorienId = " . $kategorieId . " ";
+		$sql .= "ORDER BY s.spezname ASC;";
 		return $sql;
 	}
 	
 // Profil: SQL Query für das entfernen einer Spezifikation
-	function sqlProfil6($spezifikationId) {	
+	function sqlProfil7($spezifikationId) {	
 		$sql  = "DELETE FROM spezifikation ";
 		$sql .= "WHERE id = " . $spezifikationId . " ;";
 		return $sql;

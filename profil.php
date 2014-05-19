@@ -34,13 +34,25 @@ if(isset($_POST['add'])) {
 	
 }
 
+// BEARBEITEN
+$editMode = false;
+if(isset($_POST['edit'])) {
+	$editId = mysqli_real_escape_string($verb, key($_POST["edit"]));
+	$editMode = true;
+}
+
+if(isset($_POST['complete'])) {
+	$editId = '';
+	$editMode = false;
+}
+
 
 // ENTFERNEN
 if(isset($_POST['delete'])) {
 	$id = mysqli_real_escape_string($verb, key($_POST["delete"]));
 	
 	//Eingaben abspeichern und Meldung ausgeben
-	if(executeSqlQuery($verb, sqlProfil6($id))) {
+	if(executeSqlQuery($verb, sqlProfil7($id))) {
 		echo "<p style="."color:#357ebd;".">Spezifikation wurde erfolgreich entfernt</p>" . "<br />";
 	} else {
 		echo "<p style="."color:#d43f3a;".">Spezifikation wurde konnte nicht entfernt werden</p>" . "<br />";
@@ -132,17 +144,37 @@ if(isset($_POST['delete'])) {
 				<?php 
 					//2) SQL Abfrage ausführen
 					$result = executeSqlQuery($verb, sqlProfil5($mitarbeiter));	
-
+					
 					//3) HTML Code mit Ausgabe von SQL Daten
-					$c = 1; while ($row = mysqli_fetch_array($result)) {
-						//echo var_dump($row);
+					$i = 1; while ($row = mysqli_fetch_array($result)) {
+						
 						echo "<tr>";
-						echo "<td>" . $c . "</td>";
+						echo "<td>" . $i . "</td>";
 						echo "<td>" . $row['name'] . "</td>";
-						echo "<td>" . $row['spezname'] . "</td>";
-						echo "<td style='width:20px;'><input type='submit' name='delete[".$row['id']."]' value='Entfernen' style='cursor:pointer; width:70px; color: #FFF; background-color: #d43f3a; border: 0px; padding:5px;'></td>";
+						echo "<td>";
+					
+						//echo var_dump($row);
+						$result2 = executeSqlQuery($verb, sqlProfil6($mitarbeiter, $row['id']));	
+						$j = 1; while ($innerRow = mysqli_fetch_array($result2)) {
+							if($j == 1) {
+								echo $innerRow['spezname']. " ";
+							} else {
+								echo ", " . $innerRow['spezname']. " ";
+							}
+							if($editMode && ($editId == $row['id'])) {echo "<input type='image' src='/images/delete_16.png' name='delete[".$innerRow['id']."]' id='deleteSpez' />";}
+							$j++;
+						}
+						
+						echo "</td>";
+						//echo "<td></td>";
+						if($editMode && ($editId == $row['id'])) {
+							echo "<td style='width:20px;'><input type='submit' name='complete' value='Fertig' style='cursor:pointer; width:70px; color: #FFF; border: 0px; padding:5px;'></td>";
+						} else { 
+							echo "<td style='width:20px;'><input type='submit' name='edit[".$row['id']."]' value='Bearbeiten' style='cursor:pointer; width:70px; color: #FFF; background-color: #3276b1; border: 0px; padding:5px;'></td>";
+						}
 						echo "</tr>";
-						$c++;
+						$i++;
+					
 					}
 				?>
 				
