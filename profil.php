@@ -167,7 +167,7 @@ if(isset($_POST['delete'])) {
 							} else {
 								echo ", " . $innerRow['spezname']. " ";
 							}
-							if($editMode && ($editId == $row['id'])) {echo "<input type='image' src='/images/delete_16.png' name='delete[".$innerRow['id']."]' id='deleteSpez' />";}
+							if($editMode && ($editId == $row['id'])) {echo "<input type='image' src='/images/delete_16.png' name='delete[".$innerRow['id']."]' id='deleteSpez' title='Spezifikation löschen' />";}
 							$j++;
 						}
 						
