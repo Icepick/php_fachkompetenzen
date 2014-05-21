@@ -7,8 +7,53 @@ $mitarbeiter = 13;
 //1) Verbindung zu MySQL öffnen
 $verb = openMySqlConnection();
 
+?>
+     
+ 	
+	
+	<div style="width:100%">
+		<div style="float:left">
+	
+		<h2>Person</h2> 
+		<table id="profiltable" class="contenttable">
 
-// HINZUFÜGEN
+			<?php 
+				//2) SQL Abfrage ausführen
+				$result = executeSqlQuery($verb, sqlProfil4($mitarbeiter));
+				//var_dumb($result);
+			?>
+		
+			<?php while ($profil = mysqli_fetch_array($result)) { ?>
+			<tr>
+				<td rowspan="1"><strong>Name</strong></td>		 		
+				<td rowspan="1"><?php echo $profil['vorname']; ?> <?php echo $profil['MName']; ?></td>
+			</tr>
+			<tr>
+				<td rowspan="1"><strong>Kontakt</strong></td>
+				<td rowspan="1"><?php echo $profil['mailadresse']; ?></td>
+			</tr>
+			<tr>
+				<td rowspan="1"><strong>Institut</strong></td>
+				<td rowspan="1"><?php echo $profil['IName']; ?></td>
+			</tr>
+			<tr>
+				<td colspan="2"><strong><a href="<?php echo $profil['link']; ?>">Zum Profil</a></strong></td>
+                
+				<!--<td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td> -->
+			</tr>
+			<?php } ?>             
+			 
+		</table> 
+	
+			<br/>
+		</div>
+	
+	
+
+	<h2>Spezifikation</h2>
+    
+    <?php 
+	// HINZUFÜGEN
 if(isset($_POST['add'])) {
 	
 	if (!empty($_POST['Kategorie']) && !empty($_POST['Spezifikation'])) {
@@ -60,50 +105,10 @@ if(isset($_POST['delete'])) {
 	
 }
 
-?>
-     
- 	
-	
-	<div style="width:100%">
-		<div style="float:left">
-	
-		<h2>Person</h2> 
-		<table id="profiltable" class="contenttable">
-
-			<?php 
-				//2) SQL Abfrage ausführen
-				$result = executeSqlQuery($verb, sqlProfil4($mitarbeiter));
-				//var_dumb($result);
-			?>
-		
-			<?php while ($profil = mysqli_fetch_array($result)) { ?>
-			<tr>
-				<td rowspan="1"><strong>Name</strong></td>		 		
-				<td rowspan="1"><?php echo $profil['vorname']; ?> <?php echo $profil['MName']; ?></td>
-			</tr>
-			<tr>
-				<td rowspan="1"><strong>Kontakt</strong></td>
-				<td rowspan="1"><?php echo $profil['mailadresse']; ?></td>
-			</tr>
-			<tr>
-				<td rowspan="1"><strong>Institut</strong></td>
-				<td rowspan="1"><?php echo $profil['IName']; ?></td>
-			</tr>
-			<tr>
-				<td colspan="2"><strong><a href="<?php echo $profil['link']; ?>">Zum Profil</a></strong></td>
-                
-				<!--<td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td> -->
-			</tr>
-			<?php } ?>             
-			 
-		</table> 
-	
-			<br/>
-		</div>
-	
-	
-
-	<h2>Spezifikation</h2>
+	?>
+    
+    
+    
 	
 		<form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
 			<table class="contenttable">
