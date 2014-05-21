@@ -90,8 +90,9 @@ if(isset($_POST['delete'])) {
 				<td rowspan="1"><?php echo $profil['IName']; ?></td>
 			</tr>
 			<tr>
-				<td rowspan="1"><strong>Link</strong></td>
-				<td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td>
+				<td colspan="2"><strong><a href="<?php echo $profil['link']; ?>">Zum Profil</a></strong></td>
+                
+				<!--<td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td> -->
 			</tr>
 			<?php } ?>             
 			 

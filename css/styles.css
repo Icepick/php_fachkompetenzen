@@ -1,4 +1,10 @@
-﻿* {}
+﻿
+* {}
+
+a:-webkit-any-link {
+	text-decoration: none;
+}
+
 
 body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
     margin: 0;

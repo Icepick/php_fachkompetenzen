@@ -137,7 +137,7 @@ if(strlen($checkboxStr) == 0) { ?>
 	<h2>Suchergebnis</h2>
   
     <?php
-		if(isset($eingabe)) {
+		if(isset($eingabe) && !empty($eingabe)) {
 			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe));
 			echo "<strong>Suchbegriff: " . $eingabe . "</strong><br/><br/>";
 			while ($te = mysqli_fetch_array($result)) {
