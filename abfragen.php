@@ -15,9 +15,9 @@ $tblr = "rs_spez";
 
 //////////    ABFRAGEN       ///////////	
 	
-<<<<<<< HEAD
+// <<<<<<< HEAD
 // $sql2 - NUR CHECKBOXEN ///
-=======
+// =======
 	
 	
 	function ultimateTextSearch($suchbegriff) {
@@ -54,14 +54,14 @@ $tblr = "rs_spez";
 	
 	
 // $sql2 
->>>>>>> FETCH_HEAD
+// >>>>>>> FETCH_HEAD
 	function sqlSearch2() {
 	
 	$tbli = "institut";
 	$tblm = "mitarbeiter";
 	$tbls = "spezifikation";
 	$tblk = "kategorie";
-<<<<<<< HEAD
+// <<<<<<< HEAD
 	$tblr = "rs_spez";
  	 foreach($_POST as $name => $wert) {
   // Nur Formularelemente, welche mit 'cB' beginnen, wegen Submit/senden
@@ -70,7 +70,7 @@ $tblr = "rs_spez";
 	 
 	 // Überprüfen, ob Eintrag in gewählter Kategorie
 	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
-=======
+// =======
 		
 	$checkboxStr = "";
 
@@ -84,7 +84,7 @@ $tblr = "rs_spez";
  // Überprüfen, ob Eintrag in gewählter Kategorie
 
 	$sql = "SELECT DISTINCT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
->>>>>>> FETCH_HEAD
+// >>>>>>> FETCH_HEAD
 	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
 	$sql .= " ".$tblk.".name AS kategorienname,";
 	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
@@ -227,6 +227,6 @@ $tblr = "rs_spez";
 		$sql .= "WHERE id = " . $spezifikationId . " ;";
 		return $sql;
 	}
-	
+	}
 
 ?>

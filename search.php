@@ -2,12 +2,12 @@
 <?php
 //1) Verbindung zu MySQL öffnen
 $verb = openMySqlConnection();
-<<<<<<< HEAD
+// <<<<<<< HEAD
 
 $eingabe = trim(@$_POST['eingabe']);
 
 ///////////// SUCHRESULTATE ///////////////
-=======
+// =======
 ?>
 
 <?php
@@ -18,7 +18,7 @@ if(!empty($_POST['eingabe'])) {
 }
 
 
->>>>>>> FETCH_HEAD
+// >>>>>>> FETCH_HEAD
 
 
 ////////////////// --1-- Nur Checkboxen, keine Eingabe ///////////////////////
@@ -29,12 +29,12 @@ if(!empty($_POST['checkbox'])) {
     foreach($_POST['checkbox'] as $check) {
             echo "<br />";
             echo $check;
-<<<<<<< HEAD
+// <<<<<<< HEAD
     }  
 ?>
     
 <table class="contenttable" id="resultattabelle">
-=======
+// =======
             $checkboxStr .= $check;
             
             $i++;
@@ -46,7 +46,7 @@ if(!empty($_POST['checkbox'])) {
 ?>
     
 <table width="" class="contenttable">
->>>>>>> FETCH_HEAD
+// >>>>>>> FETCH_HEAD
 
 <tr>
     <td><strong>Name / Vorname</strong></td>
@@ -200,7 +200,7 @@ if(empty($_POST['checkbox'])) {
 
 <form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 <table id="searchtable">
 
 <?php 
@@ -221,7 +221,7 @@ if(empty($_POST['checkbox'])) {
 </tr>
 <?php } ?>             
         </table> 
-=======
+// =======
 <div id="searchtable">
 	<?php 
 		//2) SQL Abfrage ausführen
@@ -250,7 +250,7 @@ if(empty($_POST['checkbox'])) {
   
     <input id="tags" class="search" type="text" name="eingabe">
     <input type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
->>>>>>> FETCH_HEAD
+// >>>>>>> FETCH_HEAD
 
 </div>
 
@@ -258,7 +258,7 @@ if(empty($_POST['checkbox'])) {
 	<br/>
 	<h2>Suchergebnis</h2>
   
-<<<<<<< HEAD
+// <<<<<<< HEAD
     <input  id="tags" type="text" name="eingabe" style="width:200px;">  <br/>
     <input  type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
 
@@ -267,7 +267,7 @@ if(empty($_POST['checkbox'])) {
 </form>
 <br/>    
 <p color:#d43f3a;".">Bitte wählen Sie eine Kategorie aus oder geben Sie einen Suchbegriff ein.</p><br />
-=======
+// =======
     <?php
 		if(isset($eingabe) && !empty($eingabe)) {
 			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe));
@@ -292,7 +292,7 @@ if(empty($_POST['checkbox'])) {
 
 
 </div>
->>>>>>> FETCH_HEAD
+// >>>>>>> FETCH_HEAD
 
 	
 <?php
