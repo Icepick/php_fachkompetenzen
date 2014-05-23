@@ -44,17 +44,17 @@ $tblk = "kategorie";
 		$sql .= "INNER JOIN `institut` i ON m.institutsId = i.Id ";
 		
 		//resultat nach suchbegriff filtern!
-		$sql .= "WHERE s.spezname LIKE '%". $suchbegriff . "%' ";
+		$sql .= "WHERE (s.spezname LIKE '%". $suchbegriff . "%' ";
 		$sql .= "OR m.vorname LIKE '%". $suchbegriff . "%' ";
 		$sql .= "OR m.name LIKE '%". $suchbegriff . "%' ";
 		$sql .= "OR m.mailadresse LIKE '%". $suchbegriff . "%' ";
 		$sql .= "OR k.name LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR i.name LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR i.name LIKE '%". $suchbegriff . "%') ";
 		
 		//resultat nach checkboxes filtern!
-		/*foreach($inCheckboxes as $key => $value) {
+		foreach($inCheckboxes as $key => $value) {
 			$sql .= "AND k.name = '" . $value . "' ";
-		}*/
+		}
 		$sql . ";";
 		
 		return $sql;
