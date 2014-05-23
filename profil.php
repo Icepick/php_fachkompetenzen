@@ -115,7 +115,6 @@ if(isset($_POST['delete'])) {
 				<!-- zum hinzufügen -->
 				<tbody>
 				<tr>
-					<td><strong>ID</strong></td>
 					<td style="width:50%"><strong>Kategorie</strong></td>
 					<td style="width:50%"><strong>Spezifikation</strong></td>
 					<td><strong>Aktion</strong></td>
@@ -123,7 +122,6 @@ if(isset($_POST['delete'])) {
 				
 				<tr>
 					
-					<td></td>
 					<td>
 						<select name="Kategorie" style="width:100%;">
 						<?php 
@@ -155,7 +153,7 @@ if(isset($_POST['delete'])) {
 					$i = 1; while ($row = mysqli_fetch_array($result)) {
 						
 						echo "<tr>";
-						echo "<td>" . $i . "</td>";
+						//echo "<td>" . $i . "</td>";
 						echo "<td>" . $row['name'] . "</td>";
 						echo "<td>";
 					
