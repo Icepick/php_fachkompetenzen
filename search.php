@@ -11,12 +11,21 @@ if(!empty($_POST['eingabe'])) {
 	$eingabe = $_POST['eingabe'];
 }
 
+//Array für empfangene checkboxes
+$inCheckboxes = array();
+
+if(!empty($_POST['checkbox'])) {
+	foreach($_POST['checkbox'] as $check) {
+		//checkbox in array hinzufügen
+		array_push($inCheckboxes, $check);
+	}
+}
 
 
-$checkboxStr = "";
+//$checkboxStr = "";
 
 // Suchabfrage für Checkboxen /////
-
+/*
 if(!empty($_POST['checkbox'])) {
 	echo "Gewählte Kategorien:";
 	$count = count($_POST['checkbox']);
@@ -31,61 +40,15 @@ if(!empty($_POST['checkbox'])) {
             if($i < $count)
 	            $checkboxStr .= ", ";
     }
-    
+ */ 
 ?>
-    
-<table width="" class="contenttable">
 
-<tr>
-    <td rowspan="1"><strong>Name / Vorname</strong></td>
-    <td rowspan="1"><strong>Kategorie</strong></td>		 		
-    <td rowspan="1"><strong>Spezifikation</strong></td>
-    <td rowspan="1"><strong>Institut</strong></td>
-    <td rowspan="1"><strong>Kontakt</strong></td>
-</tr>
-<?php 
-			//2) SQL Abfrage ausführen
-		$result = executeSqlQuery($verb, sqlSearch2());
-		while ($resultat = mysqli_fetch_array($result)) { 
-?>
-<tr>
-<td rowspan="1"> 
-		<?php echo $resultat['vorname']; ?>&nbsp<? echo $resultat['nachname']; ?>
-
-</td>
-<td rowspan="1"> 
-<?php 
-	 //2) SQL Abfrage ausführen
-	 $result2 = executeSqlQuery($verb, sqlSearch2());
-	 while ($kategorienausgabe = mysqli_fetch_array($result2)){ 
-	 echo $kategorienausgabe['kategorienname'];
-	 } ?>
-	 </td>
-<td rowspan="1"> 
-<?php 
-	 //2) SQL Abfrage ausführen
-	 $result3 = executeSqlQuery($verb, sqlSearch2());
-	 while ($spezifikationenausgabe = mysqli_fetch_array($result3)){ 
-	 echo $spezifikationenausgabe['spezifikationsname'];
-	 } ?>
-</td>
-<td rowspan="1"> 
-		<?php echo $resultat['institutsname']; ?>
-</td>
-<td rowspan="1"> 
-		<?php echo $resultat['mail']; ?>
-</td>
-</tr>
-      </table>  
-<?php } } ?>
 
 <?php
 
-
-
 //////////////// SUCHE //////////////////
 
-if(strlen($checkboxStr) == 0) { ?> 
+?>
 
 <div id="content_center_top"> 
   	                
@@ -94,20 +57,24 @@ if(strlen($checkboxStr) == 0) { ?>
 
 <div id="komptable"> 
 
-<h2>Kategorie auswählen</h2>
-
-<p color:#d43f3a;".">Bitte wählen Sie eine Kategorie aus.</p><br />
+<form name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
 
 
-<form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
+<div id="suchfunktion">
+	<p color:#d43f3a;".">Bitte wählen Sie eine Kategorie aus und/oder geben Sie einen Suchbegriff ein.</p><br />
+  
+    <input id="tags" class="search" type="text" name="eingabe" placeholder="Suchen.." />
+    <input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:10px;"  /> 
+</div>
 
 <div id="searchtable">
+
 	<?php 
 		//2) SQL Abfrage ausführen
 		$result = executeSqlQuery($verb, sqlSearch1());
 	?>
 
-	<ul>
+	<ul style="margin-left:-40px">
 	<?php while ($search = mysqli_fetch_array($result)) { ?>
 
 	<li>
@@ -120,33 +87,39 @@ if(strlen($checkboxStr) == 0) { ?>
 
 	<?php } ?>     
 	</ul>
-</div>
-
-
-<div id="suchfunktion">
 	<br/>
-	<h2>Suche verfeinern</h2>
-  
-    <input id="tags" class="search" type="text" name="eingabe">
-    <input type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
-
 </div>
 
-<div id="suchfunktion">
+
+<div id="suchergebnis">
 	<br/>
 	<h2>Suchergebnis</h2>
   
     <?php
 		if(isset($eingabe) && !empty($eingabe)) {
-			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe));
+			print(ultimateTextSearch($eingabe, $inCheckboxes));
+			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe, $inCheckboxes)); //suchergebnis
 			echo "<strong>Suchbegriff: " . $eingabe . "</strong><br/><br/>";
 			while ($te = mysqli_fetch_array($result)) {
+				$result2 = executeSqlQuery($verb, spezByMitarbeiterAndKategorie($te["mitarbeiterID"], $te["kategorieID"]));//alle spezifikationen von kategorie x und mitarbeiter y
 				echo "<div style='border: 1px solid #000; padding:10px'>";
 				echo "<strong>Person:</strong> " . $te["vorname"] . " " . $te["nachname"] . "<br/>";
 				echo "<strong>EMail:</strong> " . $te["mailadresse"] . "<br/>";
 				echo "<strong>Insitut:</strong> " . $te["institutname"] . "<br/>";
 				echo "<strong>Kategorie:</strong> " . $te["kategoriename"] . "<br/>";
-				echo "<strong>Spezifikation:</strong> " . $te["spezname"];				
+				echo "<strong>Spezifikation:</strong> ";
+				
+				$i = 0;
+				while ($ti = mysqli_fetch_array($result2)) {
+					if($i == 0) {
+						echo $ti["spezname"];
+					} else {
+						echo ",  " . $ti["spezname"];
+					}
+					$i++;
+				}
+				
+								
 				echo "</div>";
 				echo "<br/><br/>";
 		}
@@ -163,13 +136,12 @@ if(strlen($checkboxStr) == 0) { ?>
 
 	
 <?php
-}
 	//4) Verbindung zu MySQL schliessen
 	closeMySqlConnection($verb);
 ?>
 	
 <!-- Autokorrektur -->
-
+<!--
 <script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script>
@@ -203,3 +175,4 @@ if(strlen($checkboxStr) == 0) { ?>
 		});
 	});
 	</script> 
+-->

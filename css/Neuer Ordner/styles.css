@@ -60,21 +60,11 @@ label {
 }
 
 .search {
-	width: 69%;
-	height: 25px;
-}
-
-.search_button {
-	width: 60px;
-	height: 25px;
+	width: 50%;
 }
 
 #suchfunktion {
 	clear: both;
-}
-
-#suchergebnis {
-	margin-top:180px;
 }
 
 .anmelden {

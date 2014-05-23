@@ -28,18 +28,35 @@ $tblk = "kategorie";
 	
 	
 	
-	function ultimateTextSearch($suchbegriff) {
-		$sql  = "SELECT s.spezname, k.name AS 'kategoriename', m.vorname, m.name AS 'nachname', m.mailadresse, i.name AS 'institutname' ";
+	function spezByMitarbeiterAndKategorie($mitarbeiter, $kategorie) {
+		$sql  = "SELECT * FROM `spezifikation` s ";
+		$sql .= "WHERE kategorienId = " . $kategorie . " ";
+		$sql .= "AND mitarbeiterId = " . $mitarbeiter . ";";
+		return $sql;
+	}
+	
+	function ultimateTextSearch($suchbegriff, $inCheckboxes) {
+		$sql  = "SELECT s.spezname, k.ID AS 'kategorieID', k.name AS 'kategoriename', m.ID AS 'mitarbeiterID', 
+						m.vorname, m.name AS 'nachname', m.mailadresse, i.name AS 'institutname' ";
 		$sql .= "FROM `spezifikation` s ";
 		$sql .= "INNER JOIN `kategorie` k ON s.kategorienId = k.id ";
 		$sql .= "INNER JOIN `mitarbeiter` m ON s.mitarbeiterId = m.id ";
 		$sql .= "INNER JOIN `institut` i ON m.institutsId = i.Id ";
+		
+		//resultat nach suchbegriff filtern!
 		$sql .= "WHERE s.spezname LIKE '%". $suchbegriff . "%' ";
 		$sql .= "OR m.vorname LIKE '%". $suchbegriff . "%' ";
 		$sql .= "OR m.name LIKE '%". $suchbegriff . "%' ";
 		$sql .= "OR m.mailadresse LIKE '%". $suchbegriff . "%' ";
 		$sql .= "OR k.name LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR i.name LIKE '%". $suchbegriff . "%'; ";
+		$sql .= "OR i.name LIKE '%". $suchbegriff . "%' ";
+		
+		//resultat nach checkboxes filtern!
+		/*foreach($inCheckboxes as $key => $value) {
+			$sql .= "AND k.name = '" . $value . "' ";
+		}*/
+		$sql . ";";
+		
 		return $sql;
 	
 	
