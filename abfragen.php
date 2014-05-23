@@ -18,21 +18,9 @@ $tblk = "kategorie";
 $tblr = "rs_spez";
 
 
-<<<<<<< HEAD
 
 //////////    ABFRAGEN       ///////////	
-=======
-//////////    ABFRAGEN       ///////////	
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-// <<<<<<< HEAD
-=======
->>>>>>> parent of 9cdae5c... << auskommentiert
-// $sql2 - NUR CHECKBOXEN ///
-=======
-	
->>>>>>> 564f9f5f817b1fdd68e46ee9fc4b2777169e6009
 	
 	function ultimateTextSearch($suchbegriff) {
 		$sql  = "SELECT s.spezname, k.name AS 'kategoriename', m.vorname, m.name AS 'nachname', m.mailadresse, i.name AS 'institutname' ";
@@ -75,8 +63,7 @@ $tblr = "rs_spez";
 		$sql .= "ORDER BY name ASC;";
 		return $sql;
 	}
-	
-<<<<<<< HEAD
+
 	// $sql2 
 
 	function sqlSearch2() {
@@ -94,45 +81,7 @@ $tblr = "rs_spez";
 	 
 				 // Überprüfen, ob Eintrag in gewählter Kategorie
 				$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
-=======
-	
-// $sql2 
-<<<<<<< HEAD
-// >>>>>>> FETCH_HEAD
-=======
-// $sql2 - NUR CHECKBOXEN ///
->>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
-=======
->>>>>>> FETCH_HEAD
->>>>>>> parent of 9cdae5c... << auskommentiert
-	function sqlSearch2() {
-	
-	$tbli = "institut";
-	$tblm = "mitarbeiter";
-	$tbls = "spezifikation";
-	$tblk = "kategorie";
-<<<<<<< HEAD
-<<<<<<< HEAD
-// <<<<<<< HEAD
-=======
->>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
-=======
->>>>>>> parent of 9cdae5c... << auskommentiert
-	$tblr = "rs_spez";
- 	 foreach($_POST as $name => $wert) {
-  // Nur Formularelemente, welche mit 'cB' beginnen, wegen Submit/senden
-  if (substr($name,0,2) == "cB") {
-   $check .= "'".$wert."'".",";
-	 
-	 // Überprüfen, ob Eintrag in gewählter Kategorie
-	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
-<<<<<<< HEAD
-<<<<<<< HEAD
-// =======
-=======
-=======
->>>>>>> parent of 9cdae5c... << auskommentiert
->>>>>>> 564f9f5f817b1fdd68e46ee9fc4b2777169e6009
+
 		
 				$checkboxStr = "";
 
@@ -172,25 +121,13 @@ $tblr = "rs_spez";
 	$tblk = "kategorie";
 	$tblr = "rs_spez";
 
-<<<<<<< HEAD
-	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
-=======
  // Überprüfen, ob Eintrag in gewählter Kategorie
 
 	$sql = "SELECT DISTINCT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
-<<<<<<< HEAD
-// >>>>>>> FETCH_HEAD
-=======
->>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
-=======
->>>>>>> FETCH_HEAD
->>>>>>> parent of 9cdae5c... << auskommentiert
->>>>>>> 564f9f5f817b1fdd68e46ee9fc4b2777169e6009
 	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
 	$sql .= " ".$tblk.".name AS kategorienname,";
 	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
 	$sql .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls.", ".$tblr." ";
-<<<<<<< HEAD
 	$sql .= " WHERE ".$tblk.".ID = ".$tblr.".fs_spezID ";
 	$sql .= " AND ".$tblr.".fs_spezID = ".$tblr.".fs_maID";
 	$sql .= " AND ".$tblr.".fs_maID = ".$tblm.".ID ";
@@ -214,100 +151,19 @@ $tblr = "rs_spez";
             
             if($i < $count)
 	            $checkboxStr .= ", ";
-	
-=======
+
 	$sql .= " WHERE ".$tblm.".ID = ANY(SELECT fs_maID FROM ".$tblr." ";
 	$sql .= " WHERE fs_spezID = ANY(SELECT ID FROM ".$tbls." ";
 	$sql .= " WHERE kategorienID = ";
 	$sql .= " (SELECT ID FROM ".$tblk." WHERE name IN(".$check.")))) ";
-} }
+	 }
 	return $sql;
 }
 
 
-// sqlSearch1() wählt Namen der Kategorien für die Checkboxen --> search.php
-
-	function sqlSearch1() {
-		$sql  = "SELECT id, name FROM `kategorie` ";
-		$sql .= "ORDER BY name ASC;";
-		return $sql;
-	}
 	
 	
-// Search3 nur für Eingabe ohne Kategorien
 
-	function sqlSearch3() {
-	
-	$eingabe = trim(@$_GET['eingabe']);
-
-	
->>>>>>> 564f9f5f817b1fdd68e46ee9fc4b2777169e6009
-	$tbli = "institut";
-	$tblm = "mitarbeiter";
-	$tbls = "spezifikation";
-	$tblk = "kategorie";
-	$tblr = "rs_spez";
-<<<<<<< HEAD
-
-=======
-
-	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
-	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
-	$sql .= " ".$tblk.".name AS kategorienname,";
-	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
-	$sql .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls.", ".$tblr." ";
-	$sql .= " WHERE ".$tblk.".ID = ".$tblr.".fs_spezID ";
-	$sql .= " AND ".$tblr.".fs_spezID = ".$tblr.".fs_maID";
-	$sql .= " AND ".$tblr.".fs_maID = ".$tblm.".ID ";
-	$sql .= " AND ".$tblm.".name LIKE ('%.$eingabe.%') "; 
-	$sql .= " OR ".$tblm.".vorname LIKE ('%.$eingabe.%') "; 	
-	
-	return $sql;
-}
-
-	
-// Search4 für Eingabe und Kategorien
-
-	function sqlSearch4() {
-	
-	$eingabe = trim(@$_GET['eingabe']);
-	$checkboxStr = "";
-	$count = count($_POST['checkbox']);
-	$i = 0;
-    foreach($_POST['checkbox'] as $check) {
-            $checkboxStr .= $check;
-            
-            $i++;
-            
-            if($i < $count)
-	            $checkboxStr .= ", ";
-	
-	$tbli = "institut";
-	$tblm = "mitarbeiter";
-	$tbls = "spezifikation";
-	$tblk = "kategorie";
-	$tblr = "rs_spez";
-
->>>>>>> 564f9f5f817b1fdd68e46ee9fc4b2777169e6009
-	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
-	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
-	$sql .= " ".$tblk.".name AS kategorienname,";
-	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
-	$sql .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls.", ".$tblr." ";
-	$sql .= " WHERE ".$tblk.".ID = ".$tblr.".fs_spezID ";
-	$sql .= " AND ".$tblr.".fs_spezID = ".$tblr.".fs_maID";
-	$sql .= " AND ".$tblr.".fs_maID = ".$tblm.".ID ";
-	$sql .= " AND ".$tblm.".name IN ('".$eingabe."') "; 
-	$sql .= " OR ".$tblm.".vorname IN ('".$eingabe."') "; 
-	$sql .= " AND ".$tblk.".name IN ('".$checkboxStr."') ";
-	}
-	return $sql;
-}
-<<<<<<< HEAD
-=======
-
-	
->>>>>>> 564f9f5f817b1fdd68e46ee9fc4b2777169e6009
 
 // Profil: SQL Query für das Auslesen der Kategorienamen
 	function sqlProfil1() {
@@ -342,10 +198,5 @@ $tblr = "rs_spez";
 	function sqlProfil5() {
 	
 	}
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> 564f9f5f817b1fdd68e46ee9fc4b2777169e6009
 
 ?>
