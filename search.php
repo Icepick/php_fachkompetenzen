@@ -3,15 +3,22 @@
 //1) Verbindung zu MySQL öffnen
 $verb = openMySqlConnection();
 <<<<<<< HEAD
+<<<<<<< HEAD
 // <<<<<<< HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
 
 $eingabe = trim(@$_POST['eingabe']);
 
 ///////////// SUCHRESULTATE ///////////////
 <<<<<<< HEAD
+<<<<<<< HEAD
 // =======
+=======
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
 ?>
 
 <?php
@@ -22,9 +29,13 @@ if(!empty($_POST['eingabe'])) {
 }
 
 
+<<<<<<< HEAD
 // >>>>>>> FETCH_HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> parent of 9cdae5c... << auskommentiert
 
 
 ////////////////// --1-- Nur Checkboxen, keine Eingabe ///////////////////////
@@ -36,15 +47,22 @@ if(!empty($_POST['checkbox'])) {
             echo "<br />";
             echo $check;
 <<<<<<< HEAD
+<<<<<<< HEAD
 // <<<<<<< HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
     }  
 ?>
     
 <table class="contenttable" id="resultattabelle">
 <<<<<<< HEAD
+<<<<<<< HEAD
 // =======
+=======
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
             $checkboxStr .= $check;
             
             $i++;
@@ -56,9 +74,13 @@ if(!empty($_POST['checkbox'])) {
 ?>
     
 <table width="" class="contenttable">
+<<<<<<< HEAD
 // >>>>>>> FETCH_HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> parent of 9cdae5c... << auskommentiert
 
 <tr>
     <td><strong>Name / Vorname</strong></td>
@@ -214,9 +236,12 @@ if(empty($_POST['checkbox'])) {
 <form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // <<<<<<< HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
 <table id="searchtable">
 
 <?php 
@@ -238,7 +263,11 @@ if(empty($_POST['checkbox'])) {
 <?php } ?>             
         </table> 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // =======
+=======
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
 <div id="searchtable">
 	<?php 
 		//2) SQL Abfrage ausführen
@@ -267,9 +296,13 @@ if(empty($_POST['checkbox'])) {
   
     <input id="tags" class="search" type="text" name="eingabe">
     <input type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
+<<<<<<< HEAD
 // >>>>>>> FETCH_HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> parent of 9cdae5c... << auskommentiert
 
 </div>
 
@@ -278,9 +311,12 @@ if(empty($_POST['checkbox'])) {
   <h2>Suche verfeinern</h2>
   
 <<<<<<< HEAD
+<<<<<<< HEAD
 // <<<<<<< HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
     <input  id="tags" type="text" name="eingabe" style="width:200px;">  <br/>
     <input  type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
 
@@ -290,7 +326,11 @@ if(empty($_POST['checkbox'])) {
 <br/>    
 <p color:#d43f3a;".">Bitte wählen Sie eine Kategorie aus oder geben Sie einen Suchbegriff ein.</p><br />
 <<<<<<< HEAD
+<<<<<<< HEAD
 // =======
+=======
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
     <?php
 		if(isset($eingabe) && !empty($eingabe)) {
 			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe));
@@ -315,9 +355,13 @@ if(empty($_POST['checkbox'])) {
 
 
 </div>
+<<<<<<< HEAD
 // >>>>>>> FETCH_HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> parent of 9cdae5c... << auskommentiert
 
 	</div>
     </div>

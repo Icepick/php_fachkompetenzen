@@ -16,9 +16,12 @@ $tblr = "rs_spez";
 //////////    ABFRAGEN       ///////////	
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 // <<<<<<< HEAD
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
 // $sql2 - NUR CHECKBOXEN ///
-// =======
+=======
 	
 	
 	function ultimateTextSearch($suchbegriff) {
@@ -55,10 +58,14 @@ $tblr = "rs_spez";
 	
 	
 // $sql2 
+<<<<<<< HEAD
 // >>>>>>> FETCH_HEAD
 =======
 // $sql2 - NUR CHECKBOXEN ///
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> parent of 9cdae5c... << auskommentiert
 	function sqlSearch2() {
 	
 	$tbli = "institut";
@@ -66,9 +73,12 @@ $tblr = "rs_spez";
 	$tbls = "spezifikation";
 	$tblk = "kategorie";
 <<<<<<< HEAD
+<<<<<<< HEAD
 // <<<<<<< HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
 	$tblr = "rs_spez";
  	 foreach($_POST as $name => $wert) {
   // Nur Formularelemente, welche mit 'cB' beginnen, wegen Submit/senden
@@ -78,7 +88,11 @@ $tblr = "rs_spez";
 	 // Überprüfen, ob Eintrag in gewählter Kategorie
 	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
 <<<<<<< HEAD
+<<<<<<< HEAD
 // =======
+=======
+=======
+>>>>>>> parent of 9cdae5c... << auskommentiert
 		
 	$checkboxStr = "";
 
@@ -92,9 +106,13 @@ $tblr = "rs_spez";
  // Überprüfen, ob Eintrag in gewählter Kategorie
 
 	$sql = "SELECT DISTINCT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
+<<<<<<< HEAD
 // >>>>>>> FETCH_HEAD
 =======
 >>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> parent of 9cdae5c... << auskommentiert
 	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
 	$sql .= " ".$tblk.".name AS kategorienname,";
 	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
@@ -217,6 +235,6 @@ $tblr = "rs_spez";
 	function sqlProfil5() {
 	
 	}
-	}
+	
 
 ?>
