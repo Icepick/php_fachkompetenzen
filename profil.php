@@ -1,9 +1,61 @@
-﻿<?php
+﻿<h1>Mein Profil</h1> 
+
+<?php
+//DEMO MITARBEITER:
+$mitarbeiter = 13;
+
 //1) Verbindung zu MySQL öffnen
 $verb = openMySqlConnection();
 
-//Ausgefüllte Daten aus dem Kategorie & Spezifikation Formular werden hier abgefangen und in die Datenbank hinzugefügt.
-if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
+?>
+     
+ 	
+	
+	<div style="width:100%">
+		<div style="float:left">
+	
+		<h2>Person</h2> 
+		<table id="profiltable" class="contenttable">
+
+			<?php 
+				//2) SQL Abfrage ausführen
+				$result = executeSqlQuery($verb, sqlProfil4($mitarbeiter));
+				//var_dumb($result);
+			?>
+		
+			<?php while ($profil = mysqli_fetch_array($result)) { ?>
+			<tr>
+				<td rowspan="1"><strong>Name</strong></td>		 		
+				<td rowspan="1"><?php echo $profil['vorname']; ?> <?php echo $profil['MName']; ?></td>
+			</tr>
+			<tr>
+				<td rowspan="1"><strong>Kontakt</strong></td>
+				<td rowspan="1"><?php echo $profil['mailadresse']; ?></td>
+			</tr>
+			<tr>
+				<td rowspan="1"><strong>Institut</strong></td>
+				<td rowspan="1"><?php echo $profil['IName']; ?></td>
+			</tr>
+			<tr>
+				<td colspan="2"><strong><a href="<?php echo $profil['link']; ?>">Zum Profil</a></strong></td>
+                
+				<!--<td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td> -->
+			</tr>
+			<?php } ?>             
+			 
+		</table> 
+	
+			<br/>
+		</div>
+	
+	
+
+	<h2>Spezifikation</h2>
+    
+    <?php 
+	// HINZUFÜGEN
+if(isset($_POST['add'])) {
+	
 	if (!empty($_POST['Kategorie']) && !empty($_POST['Spezifikation'])) {
 	
 		//Kategoriename holen --> Serverseitig!
@@ -14,7 +66,7 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
 		$spezfikation = mysqli_real_escape_string($verb, $_POST['Spezifikation']);
 		
 		//Eingaben abspeichern und Meldung ausgeben
-		if(executeSqlQuery($verb, sqlProfil3($_POST['Kategorie'], $_POST['Spezifikation'], 13))) {
+		if(executeSqlQuery($verb, sqlProfil3($_POST['Kategorie'], $_POST['Spezifikation'], $mitarbeiter))) {
 			while ($row = mysqli_fetch_array($result1)) {
 				echo "<p style="."color:#357ebd;".">Daten wurden erfolgreich gespeichert: " . $row['name'] . ", " . $_POST['Spezifikation']."</p>" . "<br />";
 			}
@@ -24,46 +76,40 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
 	} else {
 		echo "<p style="."color:#d43f3a;".">Bitte füllen Sie alle Felder aus.</p>" . "<br />";
 	}
-}
-?>
-     
-
-	 
-	<h1>Mein Profil</h1> 
- 
-	<table id="profiltable" class="contenttable" style="float:left;">
-
-		<?php 
-			//2) SQL Abfrage ausführen
-			$result = executeSqlQuery($verb, sqlProfil4(14));
-			//var_dumb($result);
-		?>
 	
-		<?php while ($profil = mysqli_fetch_array($result)) { ?>
-        <tr>
-            <td rowspan="1"><strong>Name</strong></td>		 		
-            <td rowspan="1"><?php echo $profil['vorname']; ?> <?php echo $profil['MName']; ?></td>
-        </tr>
-        <tr>
-            <td rowspan="1"><strong>Kontakt</strong></td>
-            <td rowspan="1"><?php echo $profil['mailadresse']; ?></td>
-        </tr>
-        <tr>
-            <td rowspan="1"><strong>Institut</strong></td>
-            <td rowspan="1"><?php echo $profil['IName']; ?></td>
-        </tr>
-        <tr>
-            <td rowspan="1"><strong>Link</strong></td>
-            <td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td>
-        </tr>
-        <?php } ?>             
-         
-    </table> 
+}
+
+// BEARBEITEN
+$editMode = false;
+if(isset($_POST['edit'])) {
+	$editId = mysqli_real_escape_string($verb, key($_POST["edit"]));
+	$editMode = true;
+}
+
+if(isset($_POST['complete'])) {
+	$editId = '';
+	$editMode = false;
+}
+
+
+// ENTFERNEN
+if(isset($_POST['delete'])) {
+	$id = mysqli_real_escape_string($verb, key($_POST["delete"]));
+	
+	//Eingaben abspeichern und Meldung ausgeben
+	if(executeSqlQuery($verb, sqlProfil7($id))) {
+		echo "<p style="."color:#357ebd;".">Spezifikation wurde erfolgreich entfernt</p>" . "<br />";
+	} else {
+		echo "<p style="."color:#d43f3a;".">Spezifikation wurde konnte nicht entfernt werden</p>" . "<br />";
+	}
+	
+}
+
+	?>
     
     
-<<<<<<< HEAD
-    <form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
-    <table id="profiltable" class="contenttable">
+    
+	
 		<form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
 			<table class="contenttable">
 				<!-- zum hinzufügen -->
@@ -83,27 +129,29 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
 						<?php 
 							//2) SQL Abfrage ausführen
 							$result = executeSqlQuery($verb, sqlProfil1());	
-						?>
-=======
-	
-    <form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
-    <table id="profiltable" class="contenttable">
->>>>>>> 67ac163c6fc5018f86399ea74e5245addb07044e
 
-		<tr>
-            <td rowspan="1"><strong>Kategorie</strong></td>		 		
-            <td rowspan="1">
+							//3) HTML Code mit Ausgabe von SQL Daten
+							while ($row = mysqli_fetch_array($result)) {
+								echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+							}	
+						?>
+						</select>
+					</td>
+					<td rowspan="1" style="padding-right:8px;"><input type="text" name="Spezifikation" placeholder="Spezifikation" value="" style="width:100%;"></td>
+					<td><input type="submit" name="add" value="Hinzufügen" style="cursor:pointer; color: #FFF; background-color: #4cae4c; border: 0px; padding:5px;"></td>
+					
+				</tr>
+				</tbody>
 			
-			<select name="Kategorie" style="width:100%;">
+				<!-- zum anzeigen -->
+				<tbody>
+				
+				
 				<?php 
 					//2) SQL Abfrage ausführen
-					$result = executeSqlQuery($verb, sqlProfil1());	
-
+					$result = executeSqlQuery($verb, sqlProfil5($mitarbeiter));	
+					
 					//3) HTML Code mit Ausgabe von SQL Daten
-					while ($row = mysqli_fetch_array($result)) {
-						echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
-					}	
-<<<<<<< HEAD
 					$i = 1; while ($row = mysqli_fetch_array($result)) {
 						
 						echo "<tr>";
@@ -134,24 +182,17 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
 						$i++;
 					
 					}
-=======
->>>>>>> 67ac163c6fc5018f86399ea74e5245addb07044e
 				?>
-			</select>
-			
-			</td>
-        </tr>
-        <tr>
-            <td rowspan="1"><strong>Spezifikation</strong></td>
-            <td rowspan="1" style="padding-right:8px;"><input type="text" name="Spezifikation" placeholder="Spezifikation" value="" style="width:100%;"></td>
-        </tr>
-        <tr>
-			<td>&nbsp;</td>
-        	<td><input type="submit" value="Speichern" style="background-color: #4cae4c; border: 0px; padding:5px;"></td>
-        </tr>       
-         
-    </table> 
-    </form>
+				
+				</tbody>
+				
+				
+				
+			</table>
+		</form>
+	</div>
+	
+	
  
 <?php
 	//4) Verbindung zu MySQL schliessen

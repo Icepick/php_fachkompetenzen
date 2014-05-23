@@ -5,6 +5,9 @@ require_once("verbindung.php");
 include("abfragen.php");
 
 //aktuelle seite merken! --> dynamische navigation
+$hostname = $_SERVER['HTTP_HOST'];
+$path = dirname($_SERVER['PHP_SELF']);
+
 if(isset($_GET['page'])) {
     $page = $_GET['page'];
 } else {
