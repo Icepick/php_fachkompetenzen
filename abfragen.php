@@ -15,6 +15,7 @@ $tblr = "rs_spez";
 
 //////////    ABFRAGEN       ///////////	
 	
+<<<<<<< HEAD
 // <<<<<<< HEAD
 // $sql2 - NUR CHECKBOXEN ///
 // =======
@@ -55,13 +56,19 @@ $tblr = "rs_spez";
 	
 // $sql2 
 // >>>>>>> FETCH_HEAD
+=======
+// $sql2 - NUR CHECKBOXEN ///
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
 	function sqlSearch2() {
 	
 	$tbli = "institut";
 	$tblm = "mitarbeiter";
 	$tbls = "spezifikation";
 	$tblk = "kategorie";
+<<<<<<< HEAD
 // <<<<<<< HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
 	$tblr = "rs_spez";
  	 foreach($_POST as $name => $wert) {
   // Nur Formularelemente, welche mit 'cB' beginnen, wegen Submit/senden
@@ -70,6 +77,7 @@ $tblr = "rs_spez";
 	 
 	 // Überprüfen, ob Eintrag in gewählter Kategorie
 	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
+<<<<<<< HEAD
 // =======
 		
 	$checkboxStr = "";
@@ -85,6 +93,8 @@ $tblr = "rs_spez";
 
 	$sql = "SELECT DISTINCT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
 // >>>>>>> FETCH_HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
 	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
 	$sql .= " ".$tblk.".name AS kategorienname,";
 	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
@@ -203,29 +213,9 @@ $tblr = "rs_spez";
 		return $sql;
 	}
 	
-// Profil: SQL Query für das auslesen der spezifikationen eines mitarbeiters
-	function sqlProfil5($mitarbeiterId) {
-		$sql  = "SELECT DISTINCT s.mitarbeiterId, k.id, k.name FROM `spezifikation` s ";
-		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
-		$sql .= "WHERE s.mitarbeiterId = " . $mitarbeiterId . " ";
-		$sql .= "ORDER BY k.name ASC;";
-		return $sql;
-	}
+// Profil:
+	function sqlProfil5() {
 	
-	// Profil: SQL Query für das auslesen der spezifikationen eines mitarbeiters
-	function sqlProfil6($mitarbeiterId, $kategorieId) {
-		$sql  = "SELECT s.id, s.spezname, s.mitarbeiterId, k.name FROM `spezifikation` s ";
-		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
-		$sql .= "WHERE s.mitarbeiterId = " . $mitarbeiterId . " AND s.kategorienId = " . $kategorieId . " ";
-		$sql .= "ORDER BY s.spezname ASC;";
-		return $sql;
-	}
-	
-// Profil: SQL Query für das entfernen einer Spezifikation
-	function sqlProfil7($spezifikationId) {	
-		$sql  = "DELETE FROM spezifikation ";
-		$sql .= "WHERE id = " . $spezifikationId . " ;";
-		return $sql;
 	}
 	}
 

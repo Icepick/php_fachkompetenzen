@@ -2,11 +2,15 @@
 <?php
 //1) Verbindung zu MySQL öffnen
 $verb = openMySqlConnection();
+<<<<<<< HEAD
 // <<<<<<< HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
 
 $eingabe = trim(@$_POST['eingabe']);
 
 ///////////// SUCHRESULTATE ///////////////
+<<<<<<< HEAD
 // =======
 ?>
 
@@ -19,6 +23,8 @@ if(!empty($_POST['eingabe'])) {
 
 
 // >>>>>>> FETCH_HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
 
 
 ////////////////// --1-- Nur Checkboxen, keine Eingabe ///////////////////////
@@ -29,11 +35,15 @@ if(!empty($_POST['checkbox'])) {
     foreach($_POST['checkbox'] as $check) {
             echo "<br />";
             echo $check;
+<<<<<<< HEAD
 // <<<<<<< HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
     }  
 ?>
     
 <table class="contenttable" id="resultattabelle">
+<<<<<<< HEAD
 // =======
             $checkboxStr .= $check;
             
@@ -47,6 +57,8 @@ if(!empty($_POST['checkbox'])) {
     
 <table width="" class="contenttable">
 // >>>>>>> FETCH_HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
 
 <tr>
     <td><strong>Name / Vorname</strong></td>
@@ -191,7 +203,8 @@ if(empty($_POST['checkbox'])) {
 <div id="content_center_top"> 
   	                
 <h1>Fachkompetenzen suchen</h1>
-
+ 
+ <div id="content_center"> 
 
 <div id="komptable"> 
 
@@ -200,7 +213,10 @@ if(empty($_POST['checkbox'])) {
 
 <form  name="form1" method="post" action="<?php echo "index.php?page=" . $page ?>"  id="searchform"> 
 
+<<<<<<< HEAD
 // <<<<<<< HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
 <table id="searchtable">
 
 <?php 
@@ -221,6 +237,7 @@ if(empty($_POST['checkbox'])) {
 </tr>
 <?php } ?>             
         </table> 
+<<<<<<< HEAD
 // =======
 <div id="searchtable">
 	<?php 
@@ -251,14 +268,19 @@ if(empty($_POST['checkbox'])) {
     <input id="tags" class="search" type="text" name="eingabe">
     <input type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
 // >>>>>>> FETCH_HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
 
 </div>
 
 <div id="suchfunktion">
-	<br/>
-	<h2>Suchergebnis</h2>
+
+  <h2>Suche verfeinern</h2>
   
+<<<<<<< HEAD
 // <<<<<<< HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
     <input  id="tags" type="text" name="eingabe" style="width:200px;">  <br/>
     <input  type="submit" name="submit" value="Suche" style="margin-top:10px;"> 
 
@@ -267,6 +289,7 @@ if(empty($_POST['checkbox'])) {
 </form>
 <br/>    
 <p color:#d43f3a;".">Bitte wählen Sie eine Kategorie aus oder geben Sie einen Suchbegriff ein.</p><br />
+<<<<<<< HEAD
 // =======
     <?php
 		if(isset($eingabe) && !empty($eingabe)) {
@@ -293,7 +316,11 @@ if(empty($_POST['checkbox'])) {
 
 </div>
 // >>>>>>> FETCH_HEAD
+=======
+>>>>>>> parent of ab32ee4... Merge branch 'master' of https://github.com/Icepick/php_fachkompetenzen
 
+	</div>
+    </div>
 	
 <?php
 }  }
