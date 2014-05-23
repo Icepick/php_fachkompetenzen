@@ -1,4 +1,9 @@
 ﻿<?php
+
+// Search4 für Eingabe und Kategorien
+
+// Search3 nur für Eingabe ohne Kategorien
+
 // Zugreifen auf Verbindung
 require_once("verbindung.php");
 
@@ -10,23 +15,11 @@ $tbli = "institut";
 $tblm = "mitarbeiter";
 $tbls = "spezifikation";
 $tblk = "kategorie";
+$tblr = "rs_spez";
 
 
-//////////    ABFRAGEN       ///////////
 
-// $sql = Auswahl für Gesamtliste: Vorname, Name, Kategorie, 
-// Spezifikation, Institut, Kontakt --> nur zum Test
-
-    $sql = "SELECT ".$tblm.".name AS mitarbeitername, ".$tblm.".vorname AS mitarbeitervorname,";
-	$sql .= " ".$tblm.".mailadresse AS mitarbeitermail, ".$tblk.".name AS kategorienname, ";
-	$sql .= "".$tbls.".spezifikation AS spezifikationsname, ".$tbli.".name AS institutsname";
-	$sql .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls." ";
-	$sql .= " WHERE ".$tblk.".ID = ANY(SELECT kategorienID ";
-	$sql .= " FROM ".$tbls." WHERE mitarbeiterID = ANY(SELECT ID";
-	$sql .= " FROM ".$tblm." WHERE institutsID = ".$tbli.".ID)) ";
-	$sql .= " ORDER BY ".$tblm.".name ";
-	
-	
+//////////    ABFRAGEN       ///////////	
 	
 	function ultimateTextSearch($suchbegriff) {
 		$sql  = "SELECT s.spezname, k.name AS 'kategoriename', m.vorname, m.name AS 'nachname', m.mailadresse, i.name AS 'institutname' ";
@@ -59,68 +52,10 @@ $tblk = "kategorie";
 		*/
 	
 	}
-	
-	
-// $sql2 
-	function sqlSearch2() {
-	
-	$tbli = "institut";
-	$tblm = "mitarbeiter";
-	$tbls = "spezifikation";
-	$tblk = "kategorie";
-		
-	$checkboxStr = "";
-
-	
-	if(!empty($_POST['checkbox'])) {
-	$count = count($_POST['checkbox']);
-	$i = 0;
-	$eingabe = trim(@$_GET['eingabe']);
 
 
- // Überprüfen, ob Eintrag in gewählter Kategorie
 
-	$sql = "SELECT DISTINCT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
-	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
-	$sql .= " ".$tblk.".name AS kategorienname,";
-	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
-	$sql .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls." ";
-	$sql .= " WHERE ".$tblk.".ID = ".$tbls.".kategorienID ";
-	$sql .= " AND ".$tbls.".mitarbeiterID = ".$tblm.".ID";
-	$sql .= " AND ".$tblm.".institutsID = ".$tbli.".ID ";
-
-	if(strlen($checkboxStr) > 0)
-	$sql .= " AND ".$tblk.".name IN ('".$checkboxStr."') ";
-	
-	if(strlen($eingabe) > 0)
-
-	$sql .= " AND ".$tblm.".name IN ('".$eingabe."') ";
-	
-	
-	return $sql;
-
-}
-}
-	
-// $sql3 wählt den Kategoriennamen der Suchresultate
-
-//	$sql3 = "SELECT name FROM ".$tblk." ";
-//	$sql3 .= "WHERE name LIKE '%".$eingabe."%'";
-	
-
-// $sql4 wählt Variablen für das Profil --> profil.php
-
-	$sql4 = "SELECT DISTINCT ".$tblm.".name AS mitarbeitername, ".$tblm.".vorname AS mitarbeitervorname,";
-	$sql4 .= " ".$tblm.".mailadresse AS mitarbeitermail, ".$tblk.".name AS kategorienname, ";
-	$sql4 .= " ".$tbls.".spezifikation AS spezifikationenname, ".$tbli.".name AS institutsname";
- 	$sql4 .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls." ";
-	$sql4 .= " WHERE ".$tblk.".ID = ANY(SELECT ID ";
-	$sql4 .= " FROM ".$tblk." WHERE mitarbeiterID = ANY(SELECT ID";
-	$sql4 .= " FROM ".$tblm." WHERE institutsID = ".$tbli.".ID)) ";
-	$sql4 .= " ORDER BY ".$tblm.".name LIMIT 0, 1";
-
-
-// $sql5 wählt Namen der Kategorien für die Checkboxen --> search.php
+// sqlSearch1() wählt Namen der Kategorien für die Checkboxen --> search.php
 
 	function sqlSearch1() {
 		$sql  = "SELECT id, name FROM `kategorie` ";
@@ -128,26 +63,120 @@ $tblk = "kategorie";
 		return $sql;
 	}
 	
-// $sql6 gibt das Suchergebnis aus --> search-results.php
+	// $sql2 
+
+	function sqlSearch2() {
+	
+		$tbli = "institut";
+		$tblm = "mitarbeiter";
+		$tbls = "spezifikation";
+		$tblk = "kategorie";
+		$tblr = "rs_spez";
+ 	 
+	 	foreach($_POST as $name => $wert) {
+  			// Nur Formularelemente, welche mit 'cB' beginnen, wegen Submit/senden
+  			if (substr($name,0,2) == "cB") {
+   				$check .= "'".$wert."'".",";
+	 
+				 // Überprüfen, ob Eintrag in gewählter Kategorie
+				$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
+		
+				$checkboxStr = "";
+
+	
+				if(!empty($_POST['checkbox'])) {
+				$count = count($_POST['checkbox']);
+				$i = 0;
+				$eingabe = trim(@$_GET['eingabe']);
 
 
-/////// Abfragen an Datenbank schicken //////
-//$result_sql = mysqli_query($verb, $sql) or die("Fehler: ".mysqli_error($verb));
-// $result_sql2 = mysqli_query($verb, $sql2) or die("Fehler: ".mysqli_error($verb));
-// $result_sql3 = mysqli_query($verb, $sql3) or die("Fehler: ".mysqli_error($verb));
-//$result_sql4 = mysqli_query($verb, $sql4) or die("Fehler: ".mysqli_error($verb));
-// $result_sql5= mysqli_query($verb, $sql5) or die("Fehler: ".mysqli_error($verb));
+				// Überprüfen, ob Eintrag in gewählter Kategorie
+			
+				$sql = "SELECT DISTINCT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
+				$sql .= " ".$tbls.".spezname AS spezifikationsname,";
+				$sql .= " ".$tblk.".name AS kategorienname,";
+				$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
+				$sql .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls.", ".$tblr." ";
+				$sql .= " WHERE ".$tblm.".ID = ANY(SELECT fs_maID FROM ".$tblr." ";
+				$sql .= " WHERE fs_spezID = ANY(SELECT ID FROM ".$tbls." ";
+				$sql .= " WHERE kategorienID = ";
+				$sql .= " (SELECT ID FROM ".$tblk." WHERE name IN(".$check.")))) ";
+				}
+			} 
+		}
+		return $sql;
+	}
+	
+
+	function sqlSearch3() {
+	
+	$eingabe = trim(@$_GET['eingabe']);
+
+	
+	$tbli = "institut";
+	$tblm = "mitarbeiter";
+	$tbls = "spezifikation";
+	$tblk = "kategorie";
+	$tblr = "rs_spez";
+
+	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
+	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
+	$sql .= " ".$tblk.".name AS kategorienname,";
+	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
+	$sql .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls.", ".$tblr." ";
+	$sql .= " WHERE ".$tblk.".ID = ".$tblr.".fs_spezID ";
+	$sql .= " AND ".$tblr.".fs_spezID = ".$tblr.".fs_maID";
+	$sql .= " AND ".$tblr.".fs_maID = ".$tblm.".ID ";
+	$sql .= " AND ".$tblm.".name LIKE ('%.$eingabe.%') "; 
+	$sql .= " OR ".$tblm.".vorname LIKE ('%.$eingabe.%') "; 	
+	
+	return $sql;
+	}
 
 
+	function sqlSearch4() {
+	
+	$eingabe = trim(@$_GET['eingabe']);
+	$checkboxStr = "";
+	$count = count($_POST['checkbox']);
+	$i = 0;
+    foreach($_POST['checkbox'] as $check) {
+            $checkboxStr .= $check;
+            
+            $i++;
+            
+            if($i < $count)
+	            $checkboxStr .= ", ";
+	
+	$tbli = "institut";
+	$tblm = "mitarbeiter";
+	$tbls = "spezifikation";
+	$tblk = "kategorie";
+	$tblr = "rs_spez";
 
-// Profil: SQL Query für das auslesen der Kategorienamen
+	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
+	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
+	$sql .= " ".$tblk.".name AS kategorienname,";
+	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
+	$sql .= " FROM ".$tblm.", ".$tblk.", ".$tbli.", ".$tbls.", ".$tblr." ";
+	$sql .= " WHERE ".$tblk.".ID = ".$tblr.".fs_spezID ";
+	$sql .= " AND ".$tblr.".fs_spezID = ".$tblr.".fs_maID";
+	$sql .= " AND ".$tblr.".fs_maID = ".$tblm.".ID ";
+	$sql .= " AND ".$tblm.".name IN ('".$eingabe."') "; 
+	$sql .= " OR ".$tblm.".vorname IN ('".$eingabe."') "; 
+	$sql .= " AND ".$tblk.".name IN ('".$checkboxStr."') ";
+	}
+	return $sql;
+}
+
+// Profil: SQL Query für das Auslesen der Kategorienamen
 	function sqlProfil1() {
 		$sql  = "SELECT id, name FROM `kategorie` ";
 		$sql .= "ORDER BY name ASC;";
 		return $sql;
 	}
 	
-// Profil: SQL Query für das auslesen einer einzelnen Kategorie
+// Profil: SQL Query für das Auslesen einer einzelnen Kategorie
 	function sqlProfil2($id) {
 		$sql  = "SELECT id, name FROM `kategorie` ";
 		$sql .= "WHERE id = " . $id . ";";
@@ -169,30 +198,10 @@ $tblk = "kategorie";
 		return $sql;
 	}
 	
-// Profil: SQL Query für das auslesen der spezifikationen eines mitarbeiters
-	function sqlProfil5($mitarbeiterId) {
-		$sql  = "SELECT DISTINCT s.mitarbeiterId, k.id, k.name FROM `spezifikation` s ";
-		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
-		$sql .= "WHERE s.mitarbeiterId = " . $mitarbeiterId . " ";
-		$sql .= "ORDER BY k.name ASC;";
-		return $sql;
-	}
+// Profil:
+	function sqlProfil5() {
 	
-	// Profil: SQL Query für das auslesen der spezifikationen eines mitarbeiters
-	function sqlProfil6($mitarbeiterId, $kategorieId) {
-		$sql  = "SELECT s.id, s.spezname, s.mitarbeiterId, k.name FROM `spezifikation` s ";
-		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
-		$sql .= "WHERE s.mitarbeiterId = " . $mitarbeiterId . " AND s.kategorienId = " . $kategorieId . " ";
-		$sql .= "ORDER BY s.spezname ASC;";
-		return $sql;
 	}
-	
-// Profil: SQL Query für das entfernen einer Spezifikation
-	function sqlProfil7($spezifikationId) {	
-		$sql  = "DELETE FROM spezifikation ";
-		$sql .= "WHERE id = " . $spezifikationId . " ;";
-		return $sql;
-	}
-	
+
 
 ?>
