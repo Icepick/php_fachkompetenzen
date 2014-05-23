@@ -38,12 +38,15 @@ table.contenttable td,th {
 	padding: 10px;
 }
 
+#resultattabelle {
+	margin-right: 15px;
+	
+}
+
 #komptable {
 	float: left;
 	margin-right: 0px;
 }
-
-
 
 .checkbox {
 	margin: 10px;
@@ -57,6 +60,7 @@ label {
 #suchfunktion {
 	margin-left: 30px;
 	float: left;
+	display: block;
 }
 
 .anmelden {
@@ -386,7 +390,7 @@ a:hover, a:hover .more, #content_right a:hover {
 #content_left {
     float: left;
     height: auto;
-    width: 243px;
+    width: 200px;
 }
 .subnavigation_title {
     color: #333333;
@@ -397,7 +401,7 @@ a:hover, a:hover .more, #content_right a:hover {
 }
 #content_center {
     float: left;
-    padding: 30px 9px 10px 5px;
+    padding: 10px 9px 10px 5px;
     width: 590px;
 	vertical-align:central;
 }
