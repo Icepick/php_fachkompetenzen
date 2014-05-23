@@ -61,6 +61,7 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
     </table> 
     
     
+<<<<<<< HEAD
     <form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
     <table id="profiltable" class="contenttable">
 		<form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
@@ -83,6 +84,11 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
 							//2) SQL Abfrage ausführen
 							$result = executeSqlQuery($verb, sqlProfil1());	
 						?>
+=======
+	
+    <form action="<?php /* daten an server senden */ echo "index.php?page=" . $page ?>" method="post">
+    <table id="profiltable" class="contenttable">
+>>>>>>> 67ac163c6fc5018f86399ea74e5245addb07044e
 
 		<tr>
             <td rowspan="1"><strong>Kategorie</strong></td>		 		
@@ -97,6 +103,7 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
 					while ($row = mysqli_fetch_array($result)) {
 						echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
 					}	
+<<<<<<< HEAD
 					$i = 1; while ($row = mysqli_fetch_array($result)) {
 						
 						echo "<tr>";
@@ -127,6 +134,8 @@ if(isset($_POST['Kategorie']) && isset($_POST['Spezifikation'])) {
 						$i++;
 					
 					}
+=======
+>>>>>>> 67ac163c6fc5018f86399ea74e5245addb07044e
 				?>
 			</select>
 			
