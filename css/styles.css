@@ -1,4 +1,10 @@
-﻿* {}
+﻿
+* {}
+
+a:-webkit-any-link {
+	text-decoration: none;
+}
+
 
 body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
     margin: 0;
@@ -6,20 +12,21 @@ body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 }
 
 #profiltable {
-	width: 230px;
+	width: 100%;
 	margin-right: 10px;
 }
 
-#searchtable {
-	border: 1px solid #888888;
+#searchtable  li{
+	display: block;
+    float: left;
+    width: 33%;
 	border-spacing: 0px;
 	background-color: #EEEEEE;
-	font-size: 15px;
 	border: 1px solid #888888;
 }
 
-#searchtable td, th {
-	border: 1px solid #DDDDDD;
+#searchtable ul {
+	margin-bottom: 0px;
 }
 
 form {
@@ -57,10 +64,18 @@ label {
 	padding: 3px;
 }
 
+.search {
+	width: 50%;
+}
+
 #suchfunktion {
+<<<<<<< HEAD
 	margin-left: 30px;
 	float: left;
 	display: block;
+=======
+	clear: both;
+>>>>>>> FETCH_HEAD
 }
 
 .anmelden {
@@ -401,9 +416,15 @@ a:hover, a:hover .more, #content_right a:hover {
 }
 #content_center {
     float: left;
+<<<<<<< HEAD
     padding: 10px 9px 10px 5px;
     width: 590px;
 	vertical-align:central;
+=======
+    padding: 30px 9px 10px 5px;
+    width: 700px;
+	vertical-align:central;	
+>>>>>>> FETCH_HEAD
 }
 #content_center.largeContent {
     float: left;

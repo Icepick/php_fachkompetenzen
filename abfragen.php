@@ -15,13 +15,53 @@ $tblr = "rs_spez";
 
 //////////    ABFRAGEN       ///////////	
 	
+<<<<<<< HEAD
 // $sql2 - NUR CHECKBOXEN ///
+=======
+	
+	
+	function ultimateTextSearch($suchbegriff) {
+		$sql  = "SELECT s.spezname, k.name AS 'kategoriename', m.vorname, m.name AS 'nachname', m.mailadresse, i.name AS 'institutname' ";
+		$sql .= "FROM `spezifikation` s ";
+		$sql .= "INNER JOIN `kategorie` k ON s.kategorienId = k.id ";
+		$sql .= "INNER JOIN `mitarbeiter` m ON s.mitarbeiterId = m.id ";
+		$sql .= "INNER JOIN `institut` i ON m.institutsId = i.Id ";
+		$sql .= "WHERE s.spezname LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR m.vorname LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR m.name LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR m.mailadresse LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR k.name LIKE '%". $suchbegriff . "%' ";
+		$sql .= "OR i.name LIKE '%". $suchbegriff . "%'; ";
+		return $sql;
+	
+	
+		// Zum testen in MySQL, suche nach CSS:
+		/*
+		SELECT * FROM `spezifikation` s
+		INNER JOIN `kategorie` k ON s.kategorienId = k.id
+		INNER JOIN `mitarbeiter` m ON s.mitarbeiterId = m.id
+		INNER JOIN `institut` i ON m.institutsId = i.Id
+		WHERE
+		s.spezname LIKE '%CSS%'
+		OR m.vorname LIKE '%CSS%'
+		OR m.name LIKE '%CSS%'
+		OR m.mailadresse LIKE '%CSS%'
+		OR k.name LIKE '%CSS%'
+		OR i.name LIKE '%CSS%';
+		*/
+	
+	}
+	
+	
+// $sql2 
+>>>>>>> FETCH_HEAD
 	function sqlSearch2() {
 	
 	$tbli = "institut";
 	$tblm = "mitarbeiter";
 	$tbls = "spezifikation";
 	$tblk = "kategorie";
+<<<<<<< HEAD
 	$tblr = "rs_spez";
  	 foreach($_POST as $name => $wert) {
   // Nur Formularelemente, welche mit 'cB' beginnen, wegen Submit/senden
@@ -30,6 +70,21 @@ $tblr = "rs_spez";
 	 
 	 // Überprüfen, ob Eintrag in gewählter Kategorie
 	$sql = "SELECT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
+=======
+		
+	$checkboxStr = "";
+
+	
+	if(!empty($_POST['checkbox'])) {
+	$count = count($_POST['checkbox']);
+	$i = 0;
+	$eingabe = trim(@$_GET['eingabe']);
+
+
+ // Überprüfen, ob Eintrag in gewählter Kategorie
+
+	$sql = "SELECT DISTINCT ".$tbli.".name AS institutsname, ".$tblm.".name AS nachname,";
+>>>>>>> FETCH_HEAD
 	$sql .= " ".$tbls.".spezname AS spezifikationsname,";
 	$sql .= " ".$tblk.".name AS kategorienname,";
 	$sql .= " ".$tblm.".vorname AS vorname, ".$tblm.".mailadresse AS mail";
@@ -148,9 +203,29 @@ $tblr = "rs_spez";
 		return $sql;
 	}
 	
-// Profil:
-	function sqlProfil5() {
+// Profil: SQL Query für das auslesen der spezifikationen eines mitarbeiters
+	function sqlProfil5($mitarbeiterId) {
+		$sql  = "SELECT DISTINCT s.mitarbeiterId, k.id, k.name FROM `spezifikation` s ";
+		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
+		$sql .= "WHERE s.mitarbeiterId = " . $mitarbeiterId . " ";
+		$sql .= "ORDER BY k.name ASC;";
+		return $sql;
+	}
 	
+	// Profil: SQL Query für das auslesen der spezifikationen eines mitarbeiters
+	function sqlProfil6($mitarbeiterId, $kategorieId) {
+		$sql  = "SELECT s.id, s.spezname, s.mitarbeiterId, k.name FROM `spezifikation` s ";
+		$sql .= "INNER JOIN `kategorie` k ON s.kategorienID = k.id ";
+		$sql .= "WHERE s.mitarbeiterId = " . $mitarbeiterId . " AND s.kategorienId = " . $kategorieId . " ";
+		$sql .= "ORDER BY s.spezname ASC;";
+		return $sql;
+	}
+	
+// Profil: SQL Query für das entfernen einer Spezifikation
+	function sqlProfil7($spezifikationId) {	
+		$sql  = "DELETE FROM spezifikation ";
+		$sql .= "WHERE id = " . $spezifikationId . " ;";
+		return $sql;
 	}
 	
 
