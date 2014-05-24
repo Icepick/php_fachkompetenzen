@@ -96,7 +96,7 @@ if(!empty($_POST['checkbox'])) {
 	<h2>Suchergebnis</h2>
   
     <?php
-		if(isset($eingabe) && !empty($eingabe)) {
+		if(isset($eingabe) && isset($inCheckboxes)) {
 			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe, $inCheckboxes)); //suchergebnis
 			echo "<strong>Suchbegriff: " . $eingabe . "</strong><br/><br/>";
 			while ($te = mysqli_fetch_array($result)) {
