@@ -51,20 +51,19 @@ $tblk = "kategorie";
 			} else {
 				$sql .= "OR k.name = '" . $value . "' ";
 			}
-		}
-		
-		//resultat nach suchbegriff filtern!
-		if(count($inCheckboxes) == 0) {
-			$sql .= "WHERE (s.spezname LIKE '%". $suchbegriff . "%' ";
-		} else {
-			$sql .= "AND (s.spezname LIKE '%". $suchbegriff . "%' ";
-		}
-		$sql .= "OR m.vorname LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR m.name LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR m.mailadresse LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR k.name LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR i.name LIKE '%". $suchbegriff . "%') ";
-		
+			
+			//resultat bzw. checkboxes nach suchbegriff filtern!
+			if(count($inCheckboxes) == 0) {
+				$sql .= "WHERE (s.spezname LIKE '%". $suchbegriff . "%' ";
+			} else {
+				$sql .= "AND (s.spezname LIKE '%". $suchbegriff . "%' ";
+			}
+			$sql .= "OR m.vorname LIKE '%". $suchbegriff . "%' ";
+			$sql .= "OR m.name LIKE '%". $suchbegriff . "%' ";
+			$sql .= "OR m.mailadresse LIKE '%". $suchbegriff . "%' ";
+			$sql .= "OR k.name LIKE '%". $suchbegriff . "%' ";
+			$sql .= "OR i.name LIKE '%". $suchbegriff . "%') ";
+		}	
 		
 		//resultate nur einmal ausgeben
 		$sql .= "GROUP BY m.mailadresse ";

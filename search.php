@@ -98,7 +98,8 @@ if(!empty($_POST['checkbox'])) {
     <?php
 		if(isset($eingabe) && isset($inCheckboxes)) {
 			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe, $inCheckboxes)); //suchergebnis
-			echo "<strong>Suchbegriff: " . $eingabe . "</strong><br/><br/>";
+			echo "<strong>Suchbegriff: " . $eingabe . "</strong><br/>";
+			echo "<strong>Auswahl: "; foreach($inCheckboxes as $x=>$y) { echo $y . " | "; } echo "</strong><br/><br/>";
 			while ($te = mysqli_fetch_array($result)) {
 				$result2 = executeSqlQuery($verb, spezByMitarbeiterAndKategorie($te["mitarbeiterID"], $te["kategorieID"]));//alle spezifikationen von kategorie x und mitarbeiter y
 				echo "<div style='border: 1px solid #000; padding:10px'>";
