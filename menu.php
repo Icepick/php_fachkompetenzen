@@ -14,8 +14,4 @@
 <!-- PROFIL -->	
 <?php if ($page == 'profil') { ?><li><a href="index.php?page=profil" id="aktiv">Mein Profil</a></li>
 <?php } else { ?><li><a href="index.php?page=profil">Mein Profil</a><?php } ?>
-
-<!-- LOGOUT -->	
-<?php if ($page == 'logout.php') { ?><li><a href="index.php?page=logout" id="aktiv">Logout</a></li>
-<?php } else { ?><li><a href="index.php?page=logout">Logout</a><?php } ?>
 	
