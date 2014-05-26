@@ -26,6 +26,15 @@ $tblk = "kategorie";
 	$sql .= " FROM ".$tblm." WHERE institutsID = ".$tbli.".ID)) ";
 	$sql .= " ORDER BY ".$tblm.".name ";
 	
+	function spezByMitarbeiter($mitarbeiter, $groupby) {
+		$sql  = "SELECT * FROM `spezifikation` s ";
+		$sql .= "INNER JOIN kategorie k ON s.kategorienID = k.ID ";
+		$sql .= "WHERE mitarbeiterId = " . $mitarbeiter . " ";
+		if ($groupby) {
+			$sql .= "GROUP BY s.kategorienID;";
+			}
+		return $sql;
+	}
 	
 	
 	function spezByMitarbeiterAndKategorie($mitarbeiter, $kategorie) {
