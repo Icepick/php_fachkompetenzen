@@ -70,7 +70,7 @@ if(isset($_POST['add'])) {
 		//Eingaben abspeichern und Meldung ausgeben
 		if(executeSqlQuery($verb, sqlProfil3($_POST['Kategorie'], $_POST['Spezifikation'], $mitarbeiter))) {
 			while ($row = mysqli_fetch_array($result1)) {
-				echo "<p style="."color:#357ebd;".">Daten wurden erfolgreich gespeichert: " . $row['name'] . ", " . $_POST['Spezifikation']."</p>" . "<br />";
+				echo "<p style="."color:#4cae4c;".">Daten wurden erfolgreich gespeichert: " . $row['name'] . ", " . $_POST['Spezifikation']."</p>" . "<br />";
 			}
 		} else {
 				echo "<p style="."color:#d43f3a;".">Daten konnten nicht gespeichert werden: " . $row['name'] . ", " . $_POST['Spezifikation']."</p>" . "<br />";
