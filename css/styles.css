@@ -176,11 +176,20 @@ h2 {
 
 h7 {
     font-size: 20px;
+	text-decoration: underline;
 }
 
 h7 a {
     color: #0068AB;
+<<<<<<< HEAD
     text-decoration: underline;
+=======
+<<<<<<< HEAD
+    font-size: 20px;
+	
+=======
+>>>>>>> 9604daaa887eda59220153bfa64eb83290af3965
+>>>>>>> FETCH_HEAD
 }
 
 .external, .external-link, .external-link-new-window {
