@@ -56,14 +56,14 @@ $tblk = "kategorie";
 		//resultat nach checkboxes filtern!
 		foreach($inCheckboxes as $key => $value) {
 			if($key == 0) {
-<<<<<<< HEAD
+//<<<<<< HEAD
 				$sql .= "AND k.name = '" . $value . "' ";
 			} else {
 				$sql .= "OR k.name = '" . $value . "' ";
 			}
 		}
 		$sql . ";";
-=======
+//======= 
 				$sql .= "WHERE k.name = '" . $value . "' ";
 			} else {
 				$sql .= "OR k.name = '" . $value . "' ";
