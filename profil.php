@@ -14,7 +14,6 @@ $verb = openMySqlConnection();
 	<div style="width:100%">
 		<div style="float:left">
 	
-		<h2>Person</h2> 
 		<table id="profiltable" class="contenttable">
 
 			<?php 
@@ -25,19 +24,19 @@ $verb = openMySqlConnection();
 		
 			<?php while ($profil = mysqli_fetch_array($result)) { ?>
 			<tr>
-				<td rowspan="1"><strong>Name</strong></td>		 		
+				<td rowspan="1"><h7>Name</h7></td>		 		
 				<td rowspan="1"><?php echo $profil['vorname']; ?> <?php echo $profil['MName']; ?></td>
 			</tr>
 			<tr>
-				<td rowspan="1"><strong>Kontakt</strong></td>
+				<td rowspan="1"><h7>Kontakt</h7></td>
 				<td rowspan="1"><?php echo $profil['mailadresse']; ?></td>
 			</tr>
 			<tr>
-				<td rowspan="1"><strong>Institut</strong></td>
+				<td rowspan="1"><h7>Institut</h7></td>
 				<td rowspan="1"><?php echo $profil['IName']; ?></td>
 			</tr>
 			<tr>
-				<td colspan="2"><strong><a href="<?php echo $profil['link']; ?>">Zum Profil</a></strong></td>
+				<td colspan="2"><a href="<?php echo $profil['link']; ?>"><h7>Zur Detailseite</h7></a></td>
                 
 				<!--<td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td> -->
 			</tr>
@@ -47,10 +46,10 @@ $verb = openMySqlConnection();
 	
 			<br/>
 		</div>
-	
-	
+		
+	<h2>&nbsp</h2>
 
-	<h2>Spezifikation</h2>
+	<h2>Meine Kompetenzen anpassen</h2>
     
     <?php 
 	// HINZUFÜGEN
@@ -115,15 +114,13 @@ if(isset($_POST['delete'])) {
 				<!-- zum hinzufügen -->
 				<tbody>
 				<tr>
-					<td><strong>ID</strong></td>
-					<td style="width:50%"><strong>Kategorie</strong></td>
-					<td style="width:50%"><strong>Spezifikation</strong></td>
-					<td><strong>Aktion</strong></td>
+					<th style="width:30%"><h7>Kategorie</h7></th>
+					<th style="width:50%"><h7>Kompetenz</h7></th>
+					<th><h7>Aktion</h7></th>
 				</td>
 				
 				<tr>
 					
-					<td></td>
 					<td>
 						<select name="Kategorie" style="width:100%;">
 						<?php 
@@ -155,7 +152,7 @@ if(isset($_POST['delete'])) {
 					$i = 1; while ($row = mysqli_fetch_array($result)) {
 						
 						echo "<tr>";
-						echo "<td>" . $i . "</td>";
+						// echo "<td>" . $i . "</td>";
 						echo "<td>" . $row['name'] . "</td>";
 						echo "<td>";
 					
@@ -167,7 +164,7 @@ if(isset($_POST['delete'])) {
 							} else {
 								echo ", " . $innerRow['spezname']. " ";
 							}
-							if($editMode && ($editId == $row['id'])) {echo "<input type='image' src='/images/delete_16.png' name='delete[".$innerRow['id']."]' id='deleteSpez' title='Spezifikation löschen' />";}
+							if($editMode && ($editId == $row['id'])) {echo "<input type='image' src='images/delete_16.png' name='delete[".$innerRow['id']."]' id='deleteSpez' title='Kompetenz löschen' />";}
 							$j++;
 						}
 						

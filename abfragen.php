@@ -26,6 +26,15 @@ $tblk = "kategorie";
 	$sql .= " FROM ".$tblm." WHERE institutsID = ".$tbli.".ID)) ";
 	$sql .= " ORDER BY ".$tblm.".name ";
 	
+	function spezByMitarbeiter($mitarbeiter, $groupby) {
+		$sql  = "SELECT * FROM `spezifikation` s ";
+		$sql .= "INNER JOIN kategorie k ON s.kategorienID = k.ID ";
+		$sql .= "WHERE mitarbeiterId = " . $mitarbeiter . " ";
+		if ($groupby) {
+			$sql .= "GROUP BY s.kategorienID;";
+			}
+		return $sql;
+	}
 	
 	
 	function spezByMitarbeiterAndKategorie($mitarbeiter, $kategorie) {
@@ -43,23 +52,40 @@ $tblk = "kategorie";
 		$sql .= "INNER JOIN `mitarbeiter` m ON s.mitarbeiterId = m.id ";
 		$sql .= "INNER JOIN `institut` i ON m.institutsId = i.Id ";
 		
-		//resultat nach suchbegriff filtern!
-		$sql .= "WHERE (s.spezname LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR m.vorname LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR m.name LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR m.mailadresse LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR k.name LIKE '%". $suchbegriff . "%' ";
-		$sql .= "OR i.name LIKE '%". $suchbegriff . "%') ";
 		
 		//resultat nach checkboxes filtern!
 		foreach($inCheckboxes as $key => $value) {
 			if($key == 0) {
+<<<<<<< HEAD
 				$sql .= "AND k.name = '" . $value . "' ";
 			} else {
 				$sql .= "OR k.name = '" . $value . "' ";
 			}
 		}
 		$sql . ";";
+=======
+				$sql .= "WHERE k.name = '" . $value . "' ";
+			} else {
+				$sql .= "OR k.name = '" . $value . "' ";
+			}
+			
+			//resultat bzw. checkboxes nach suchbegriff filtern!
+			if(count($inCheckboxes) == 0) {
+				$sql .= "WHERE (s.spezname LIKE '%". $suchbegriff . "%' ";
+			} else {
+				$sql .= "AND (s.spezname LIKE '%". $suchbegriff . "%' ";
+			}
+			$sql .= "OR m.vorname LIKE '%". $suchbegriff . "%' ";
+			$sql .= "OR m.name LIKE '%". $suchbegriff . "%' ";
+			$sql .= "OR m.mailadresse LIKE '%". $suchbegriff . "%' ";
+			$sql .= "OR k.name LIKE '%". $suchbegriff . "%' ";
+			$sql .= "OR i.name LIKE '%". $suchbegriff . "%') ";
+		}	
+		
+		//resultate nur einmal ausgeben
+		$sql .= "GROUP BY m.mailadresse ";
+		$sql .= ";";
+>>>>>>> f87245ebfd91bc8cf87c03909bf2ec2b4c49d8a9
 		
 		return $sql;
 	

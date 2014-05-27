@@ -52,7 +52,7 @@ if(!empty($_POST['checkbox'])) {
 
 <div id="content_center_top"> 
   	                
-<h1>Fachkompetenzen suchen</h1>
+<h1>Forschungskompetenzen suchen</h1>
 
 
 <div id="komptable"> 
@@ -96,17 +96,32 @@ if(!empty($_POST['checkbox'])) {
 	<h2>Suchergebnis</h2>
   
     <?php
-		if(isset($eingabe) && !empty($eingabe)) {
+		if(isset($eingabe) && isset($inCheckboxes)) {
 			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe, $inCheckboxes)); //suchergebnis
-			echo "<strong>Suchbegriff: " . $eingabe . "</strong><br/><br/>";
+			echo "<strong>Suchbegriff: " . $eingabe . "</strong><br/>";
+			echo "<strong>Auswahl: "; foreach($inCheckboxes as $x=>$y) { echo $y . " | "; } echo "</strong><br/><br/>";
 			while ($te = mysqli_fetch_array($result)) {
-				$result2 = executeSqlQuery($verb, spezByMitarbeiterAndKategorie($te["mitarbeiterID"], $te["kategorieID"]));//alle spezifikationen von kategorie x und mitarbeiter y
+				$result2 = executeSqlQuery($verb, spezByMitarbeiter($te["mitarbeiterID"], false)); //alle spezifikationen von kategorie x und mitarbeiter y
+				$result3 = executeSqlQuery($verb, spezByMitarbeiter($te["mitarbeiterID"], true)); //alle spezifikationen von kategorie x und mitarbeiter y
 				echo "<div style='border: 1px solid #000; padding:10px'>";
-				echo "<strong>Person:</strong> " . $te["vorname"] . " " . $te["nachname"] . "<br/>";
-				echo "<strong>EMail:</strong> " . $te["mailadresse"] . "<br/>";
+				echo "<strong>Mitarbeiter:</strong> " . $te["vorname"] . " " . $te["nachname"] . "<br/>";
+				echo "<strong>E-Mail:</strong> "; echo "<a href='mailto:" . $te["mailadresse"] . "?> " . $te["mailadresse"]. " </a> "<br/>";
 				echo "<strong>Insitut:</strong> " . $te["institutname"] . "<br/>";
-				echo "<strong>Kategorie:</strong> " . $te["kategoriename"] . "<br/>";
-				echo "<strong>Spezifikation:</strong> ";
+				
+				echo "<strong>Kategorie:</strong> ";
+				
+				$j = 0;
+				while ($tj = mysqli_fetch_array($result3)) {
+					 if($j == 0) {
+						echo $tj["name"];
+					} else {
+						echo ",  " . $tj["name"];
+					}
+					$j++;
+				}
+				
+				echo "<br/>";
+				echo "<strong>Kompetenz:</strong> ";
 				
 				$i = 0;
 				while ($ti = mysqli_fetch_array($result2)) {
@@ -139,8 +154,6 @@ if(!empty($_POST['checkbox'])) {
 	closeMySqlConnection($verb);
 ?>
 	
-<!-- Autokorrektur -->
-<!--
 <script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script>
@@ -149,24 +162,30 @@ if(!empty($_POST['checkbox'])) {
 			"CSS",
 			"HTML",
 			"Chinesisch",
-			"BASIC",
-			"C",
-			"C++",
-			"Clojure",
-			"COBOL",
-			"ColdFusion",
-			"Erlang",
-			"Fortran",
-			"Groovy",
-			"Haskell",
-			"Java",
-			"JavaScript",
-			"Lisp",
-			"Perl",
+			"SQL",
 			"PHP",
-			"Python",
-			"Ruby",
-			"Scala",
+			"AngularJS",
+			"JavaScript",
+			"Bootstrap",
+			"Java Jersey",
+			"Krisenkommunikation",
+			"Photoshop",
+			"Illustrator",
+			"Wireframe",
+			"Inszenierung",
+			"Sketching",
+			"Organisationskommunikation",
+			"AJAX",
+			"Popkultur",
+			"Storyboarding",
+			"Medienpsychologie",
+			"Medienforschung",
+			"Persönlichkeitsrecht",
+			"Radioproduktion",
+			"Sprechtraining",
+			"Interviews",
+			"Geschichte der Privatradios",
+			"Organisationskommunikation",
 			"Scheme" // beim letzten Wert kein Komma mehr!
 		];
 		$( "#tags" ).autocomplete({
@@ -174,4 +193,3 @@ if(!empty($_POST['checkbox'])) {
 		});
 	});
 	</script> 
--->

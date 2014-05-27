@@ -11,24 +11,37 @@ Menu
 	height:auto;
 	width: 150px;
 	list-style:none;
-	background-color:#bbb;
+    font-family: 'Rokkitt';
 }
 .menu li a{
 	text-decoration:none;
-	font-size:16px;
+	font-size:20px;
 	color:#333333;
 	display: block;
 	padding: 15px;
 	padding-right: 10px;
 	padding-left: 10px;
-	border: 1px solid 000;
-
+<!--	border: 1px solid 000; -->
 }
 
 .menu a:hover{
-	background-color:#e3e3e3;
+	background-color:#0068AB;
+    color: #fff;
+    transition: background-color .2s ease-in;
 }
 
 #aktiv {
-	background-color: #e3e3e3;
+	background-color: #0068AB;
+    color: #fff;
+    transition: background-color .2s ease-in;
+}
+
+@font-face {
+    font-family: 'Rokkitt';
+    src: url("../fonts/rokkitt/rokkitt-webfont.ttf");
+}
+
+@font-face {
+    font-family: 'Rockwbol';
+    src: url("../fonts/rockwbol/RockwBol.ttf");
 }
