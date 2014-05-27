@@ -135,7 +135,7 @@ div.csc-textpic {
 }
 
 h1, h2, h3, h4, h5, h6, h7 {
-	font-family: rokkitt,Arial,Arial,sans-serif;
+	font-family: rokkitt,Arial,Helvetica,sans-serif;
     font-weight: normal;
 }
 
@@ -146,6 +146,16 @@ body {
     color: #333333;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 12px;
+    line-height: 18px;
+}
+
+body1 {
+	background-image:url(../images/bg_body.png);
+    background-position: 0 1px;
+    background-repeat: repeat-x;
+    color: #333333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
     line-height: 18px;
 }
 
@@ -163,13 +173,7 @@ h2 {
     padding-top: 20px;
 }
 
-h3 {
-	color: #333333;
-    font-size: 18px;
-    width: 550px;
-    padding-bottom: 20px;
-    padding-top: 20px;
-}
+
 
 h7 {
     color: #333333;
