@@ -45,25 +45,16 @@ $tblk = "kategorie";
 	}
 	
 	function ultimateTextSearch($suchbegriff, $inCheckboxes) {
-		$sql  = "SELECT DISTINCT s.spezname, k.ID AS 'kategorieID', k.name AS 'kategoriename', m.ID AS 'mitarbeiterID', 
+		$sql  = "SELECT s.spezname, k.ID AS 'kategorieID', k.name AS 'kategoriename', m.ID AS 'mitarbeiterID', 
 						m.vorname, m.name AS 'nachname', m.mailadresse, i.name AS 'institutname' ";
 		$sql .= "FROM `spezifikation` s ";
 		$sql .= "INNER JOIN `kategorie` k ON s.kategorienId = k.id ";
 		$sql .= "INNER JOIN `mitarbeiter` m ON s.mitarbeiterId = m.id ";
 		$sql .= "INNER JOIN `institut` i ON m.institutsId = i.Id ";
 		
-		
 		//resultat nach checkboxes filtern!
 		foreach($inCheckboxes as $key => $value) {
 			if($key == 0) {
-//<<<<<< HEAD
-				$sql .= "AND k.name = '" . $value . "' ";
-			} else {
-				$sql .= "OR k.name = '" . $value . "' ";
-			}
-		}
-		$sql . ";";
-//======= 
 				$sql .= "WHERE k.name = '" . $value . "' ";
 			} else {
 				$sql .= "OR k.name = '" . $value . "' ";
@@ -85,10 +76,8 @@ $tblk = "kategorie";
 		//resultate nur einmal ausgeben
 		$sql .= "GROUP BY m.mailadresse ";
 		$sql .= ";";
->>>>>>> f87245ebfd91bc8cf87c03909bf2ec2b4c49d8a9
 		
 		return $sql;
-	
 	
 		// Zum testen in MySQL, suche nach CSS:
 		/*
