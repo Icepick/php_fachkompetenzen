@@ -105,7 +105,7 @@ if(!empty($_POST['checkbox'])) {
 				$result3 = executeSqlQuery($verb, spezByMitarbeiter($te["mitarbeiterID"], true)); //alle spezifikationen von kategorie x und mitarbeiter y
 				echo "<div style='border: 1px solid #000; padding:10px'>";
 				echo "<strong>Mitarbeiter:</strong> " . $te["vorname"] . " " . $te["nachname"] . "<br/>";
-				echo "<strong>E-Mail:</strong> "; echo "<a href='mailto:" . $te["mailadresse"] . "?> " . $te["mailadresse"]. " </a> "<br/>";
+				echo "<strong>E-Mail:</strong> "; echo "<a href='mailto:" . $te["mailadresse"] . " '> " . $te["mailadresse"]. " </a> <br/>";
 				echo "<strong>Insitut:</strong> " . $te["institutname"] . "<br/>";
 				
 				echo "<strong>Kategorie:</strong> ";
