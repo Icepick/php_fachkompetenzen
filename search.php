@@ -61,7 +61,7 @@ if(!empty($_POST['checkbox'])) {
 
 
 <div id="suchfunktion">
-	<p color:#d43f3a;".">Bitte wählen Sie eine oder mehrere Kategorie aus und/oder geben Sie einen Suchbegriff ein.</p><br />
+	<!--<p color:#d43f3a;".">--><h3>Bitte wählen Sie eine oder mehrere Kategorien aus und/oder geben Sie einen Suchbegriff ein.</h3><!--</p><br />-->
   
     <input id="tags" class="search" type="text" name="eingabe" placeholder="Suchen.." />
     <input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:10px;"  /> 

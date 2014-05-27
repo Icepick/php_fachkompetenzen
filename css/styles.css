@@ -135,7 +135,7 @@ div.csc-textpic {
 }
 
 h1, h2, h3, h4, h5, h6, h7 {
-	font-family: rokkitt,Arial,Helvetica,sans-serif;
+	font-family: rokkitt,Arial,Arial,sans-serif;
     font-weight: normal;
 }
 
@@ -159,6 +159,14 @@ h2 {
     color: #333333;
     font-size: 24px;
     width: 300px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+h3 {
+	color: #333333;
+    font-size: 18px;
+    width: 550px;
     padding-bottom: 20px;
     padding-top: 20px;
 }
