@@ -178,11 +178,13 @@ h2 {
 h7 {
     color: #333333;
     font-size: 20px;
+	text-decoration: underline;
 }
 
 h7:hover {
     color: #0068AB;
     font-size: 20px;
+	
 }
 
 
