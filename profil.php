@@ -36,7 +36,9 @@ $verb = openMySqlConnection();
 				<td rowspan="1"><?php echo $profil['IName']; ?></td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="<?php echo $profil['link']; ?>"><h7>Zur Detailseite der HTW</h7></a></td>
+            
+            
+				<td colspan="2"><a href="<?php echo $profil['link']; ?>"><h7 style="text-decoration:underline">Zur Detailseite der HTW</h7></a></td>
                 
 				<!--<td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td> -->
 			</tr>
@@ -50,6 +52,7 @@ $verb = openMySqlConnection();
 	<h2>&nbsp</h2>
 
 	<h2>Meine Kompetenzen anpassen</h2>
+    <body1>Erklärungstext</body1>
     
     <?php 
 	// HINZUFÜGEN
