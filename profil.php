@@ -36,7 +36,9 @@ $verb = openMySqlConnection();
 				<td rowspan="1"><?php echo $profil['IName']; ?></td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="<?php echo $profil['link']; ?>"><h7>Zur Detailseite der HTW</h7></a></td>
+            
+            
+				<td colspan="2"><a href="<?php echo $profil['link']; ?>"><h7 style="text-decoration:underline">Zur Detailseite der HTW</h7></a></td>
                 
 				<!--<td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td> -->
 			</tr>
@@ -50,6 +52,7 @@ $verb = openMySqlConnection();
 	<h2>&nbsp</h2>
 
 	<h2>Meine Kompetenzen anpassen</h2>
+    <body1>Bitte speichern Sie Ihre Kompetenzen einzeln nach Kategorie ab.</body1>
     
     <?php 
 	// HINZUFÜGEN
@@ -67,7 +70,7 @@ if(isset($_POST['add'])) {
 		//Eingaben abspeichern und Meldung ausgeben
 		if(executeSqlQuery($verb, sqlProfil3($_POST['Kategorie'], $_POST['Spezifikation'], $mitarbeiter))) {
 			while ($row = mysqli_fetch_array($result1)) {
-				echo "<p style="."color:#357ebd;".">Daten wurden erfolgreich gespeichert: " . $row['name'] . ", " . $_POST['Spezifikation']."</p>" . "<br />";
+				echo "<p style="."color:#4cae4c;".">Daten wurden erfolgreich gespeichert: " . $row['name'] . ", " . $_POST['Spezifikation']."</p>" . "<br />";
 			}
 		} else {
 				echo "<p style="."color:#d43f3a;".">Daten konnten nicht gespeichert werden: " . $row['name'] . ", " . $_POST['Spezifikation']."</p>" . "<br />";

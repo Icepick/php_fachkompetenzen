@@ -7,10 +7,10 @@
     font-family: 'Rockwbol';
     src: url("../fonts/rockwbol/RockwBol.ttf");
 }
-/*
+
 a:-webkit-any-link {
-	text-decoration: none;
-} */
+	text-decoration: underline;
+} 
 
 
 body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
@@ -157,7 +157,7 @@ body1 {
     color: #333333;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 14px;
-    line-height: 18px;
+    line-height: 40px;
 }
 
 h1 {
@@ -176,12 +176,13 @@ h2 {
 
 h7 {
     font-size: 20px;
-	text-decoration: underline;
 }
 
 h7 a {
     color: #0068AB;
+    text-decoration: underline;
     font-size: 20px;
+
 }
 
 .external, .external-link, .external-link-new-window {
