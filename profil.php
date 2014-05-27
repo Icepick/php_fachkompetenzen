@@ -52,7 +52,7 @@ $verb = openMySqlConnection();
 	<h2>&nbsp</h2>
 
 	<h2>Meine Kompetenzen anpassen</h2>
-    <body1>Erklärungstext</body1>
+    <body1>Bitte speichern Sie Ihre Kompetenzen einzeln nach Kategorie ab.</body1>
     
     <?php 
 	// HINZUFÜGEN
