@@ -14,7 +14,6 @@ $verb = openMySqlConnection();
 	<div style="width:100%">
 		<div style="float:left">
 	
-		<h2>Person</h2> 
 		<table id="profiltable" class="contenttable">
 
 			<?php 
@@ -47,10 +46,10 @@ $verb = openMySqlConnection();
 	
 			<br/>
 		</div>
-	
-	
+		
+	<h2>&nbsp</h2>
 
-	<h2>Spezifikation</h2>
+	<h2>Meine Kompetenzen anpassen</h2>
     
     <?php 
 	// HINZUFÜGEN
