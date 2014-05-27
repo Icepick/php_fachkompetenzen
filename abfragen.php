@@ -36,7 +36,7 @@ $tblk = "kategorie";
 	}
 	
 	function ultimateTextSearch($suchbegriff, $inCheckboxes) {
-		$sql  = "SELECT s.spezname, k.ID AS 'kategorieID', k.name AS 'kategoriename', m.ID AS 'mitarbeiterID', 
+		$sql  = "SELECT DISTINCT s.spezname, k.ID AS 'kategorieID', k.name AS 'kategoriename', m.ID AS 'mitarbeiterID', 
 						m.vorname, m.name AS 'nachname', m.mailadresse, i.name AS 'institutname' ";
 		$sql .= "FROM `spezifikation` s ";
 		$sql .= "INNER JOIN `kategorie` k ON s.kategorienId = k.id ";
@@ -53,7 +53,11 @@ $tblk = "kategorie";
 		
 		//resultat nach checkboxes filtern!
 		foreach($inCheckboxes as $key => $value) {
-			$sql .= "AND k.name = '" . $value . "' ";
+			if($key == 0) {
+				$sql .= "AND k.name = '" . $value . "' ";
+			} else {
+				$sql .= "OR k.name = '" . $value . "' ";
+			}
 		}
 		$sql . ";";
 		
