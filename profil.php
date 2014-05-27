@@ -36,7 +36,7 @@ $verb = openMySqlConnection();
 				<td rowspan="1"><?php echo $profil['IName']; ?></td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="<?php echo $profil['link']; ?>"><h7>Zur Detailseite</h7></a></td>
+				<td colspan="2"><a href="<?php echo $profil['link']; ?>"><h7>Zur Detailseite der HTW</h7></a></td>
                 
 				<!--<td rowspan="1"><a href="<?php echo $profil['link']; ?>"><?php echo $profil['link']; ?></a></td> -->
 			</tr>
