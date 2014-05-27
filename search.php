@@ -90,7 +90,7 @@ if(!empty($_POST['checkbox'])) {
 	<br/>
 </div>
 
-    <input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:10px;"  /> 
+    <input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:55px; margin-left:245px"  /> 
 
 <div id="suchergebnis">
 	<br/>
