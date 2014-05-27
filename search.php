@@ -64,7 +64,7 @@ if(!empty($_POST['checkbox'])) {
 	<!--<p color:#d43f3a;".">--><body1>Bitte wählen Sie eine oder mehrere Kategorien aus und/oder geben Sie einen Suchbegriff ein.</body1><!--</p><br />-->
   
     <input id="tags" class="search" type="text" name="eingabe" placeholder="Suchen.." />
-    <input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:10px;"  /> 
+
 </div>
 
 <div id="searchtable">
@@ -90,6 +90,7 @@ if(!empty($_POST['checkbox'])) {
 	<br/>
 </div>
 
+    <input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:10px;"  /> 
 
 <div id="suchergebnis">
 	<br/>
@@ -133,6 +134,9 @@ if(!empty($_POST['checkbox'])) {
 					$i++;
 				}
 				
+				echo "<br/>";
+				echo "<a href='" . $te["mitarbeiterlink"] . " '>Link zum HTW-Profil</a> <br/>";
+
 								
 				echo "</div>";
 				echo "<br/><br/>";
