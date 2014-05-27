@@ -121,7 +121,7 @@ if(!empty($_POST['checkbox'])) {
 				}
 				
 				echo "<br/>";
-				echo "<strong>Spezifikation:</strong> ";
+				echo "<strong>Kompetenz:</strong> ";
 				
 				$i = 0;
 				while ($ti = mysqli_fetch_array($result2)) {

@@ -1,5 +1,12 @@
-﻿
-* {}
+@font-face {
+    font-family: 'Rokkitt';
+    src: url("../fonts/rokkitt/rokkitt-webfont.ttf");
+}
+
+@font-face {
+    font-family: 'Rockwbol';
+    src: url("../fonts/rockwbol/RockwBol.ttf");
+}
 
 a:-webkit-any-link {
 	text-decoration: none;
@@ -20,7 +27,6 @@ body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 	height: 25px;
     float: left;
     width: 33%;
-
 }
 
 #searchtable ul {
@@ -32,14 +38,17 @@ form {
 }
 
 table.contenttable {
-	border: 1px solid #888888;
 	border-spacing: 0px;
-	background-color: #EEEEEE;
 	font-size: 15px;
+	border: solid 1px #000;
+    border-bottom: none;
+}
+
+table.contenttable td, th {
+	border-bottom: solid 1px #000;
 }
 
 table.contenttable td,th {
-	border: 1px solid #DDDDDD;
 	padding: 10px;
 }
 
@@ -47,8 +56,6 @@ table.contenttable td,th {
 	float: left;
 	margin-right: 0px;
 }
-
-
 
 .checkbox {
 	margin: 10px;
@@ -127,15 +134,12 @@ div.csc-textpic {
 	margin-top: 5px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
+h1, h2, h3, h4, h5, h6, h7 {
 	font-family: rokkitt,Arial,Helvetica,sans-serif;
     font-weight: normal;
-	margin-bottom: 20px;
 }
 
 body {
-    background-color: #E7E6DE;
     background-image: url("../images/bg_body.png");
     background-position: 0 1px;
     background-repeat: repeat-x;
@@ -144,24 +148,33 @@ body {
     font-size: 12px;
     line-height: 18px;
 }
-h7 {
-    color: #333333;
-    font-family: rokkitt,Arial,Helvetica,sans-serif;
-    font-size: 22px;
-}
+
+
+
 h1 {
     color: #333333;
-    font-family: rokkitt,Arial,Helvetica,sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 30px;
 }
 
 h2 {
     color: #333333;
-    font-family: rokkitt,Arial,Helvetica,sans-serif;
-    font-size: 16px;
-	width:200px;
+    font-size: 24px;
+    width: 200px;
+    margin-bottom: 20px;
 }
+
+h7 {
+    color: #333333;
+    font-size: 20px;
+}
+
+h7:hover {
+    color: #0068AB;
+    font-size: 20px;
+}
+
+
 .external, .external-link, .external-link-new-window {
     background-image: url("../images/icons/rte/external_link_new_window.png");
     background-position: 0 1px;
@@ -436,7 +449,6 @@ a:hover, a:hover .more, #content_right a:hover {
     float: left;
     line-height: 1em;
     padding: 2px 0 0;
-    width: 420px;
 }
 #content_center .content_icons_top {
     float: right;
