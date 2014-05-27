@@ -61,7 +61,7 @@ if(!empty($_POST['checkbox'])) {
 
 
 <div id="suchfunktion">
-	<!--<p color:#d43f3a;".">--><body1>Bitte wählen Sie eine oder mehrere Kategorien aus und/oder geben Sie einen Suchbegriff ein.</body1><!--</p><br />-->
+	<body1>Bitte wählen Sie eine oder mehrere Kategorien aus und/oder geben Sie einen Suchbegriff ein.</body1><!--</p><br />-->
   
     <input id="tags" class="search" type="text" name="eingabe" placeholder="Suchen.." />
 
@@ -79,7 +79,7 @@ if(!empty($_POST['checkbox'])) {
 
 	<li>
 	<label>
-		<input class="checkbox" type="checkbox" name="checkbox[<?php $search['name']; ?>]" 
+	<input class="checkbox" type="checkbox" name="checkbox[<?php $search['name']; ?>]" 
 		id="checkbox[<?php $search['name']; ?>]" value="<?php echo $search['name']; ?>"> 
 		&nbsp;<?php echo $search['name']; ?>
 	</label>
@@ -90,7 +90,7 @@ if(!empty($_POST['checkbox'])) {
 	<br/>
 </div>
 
-    <input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:10px;"  /> 
+  <input type="submit" class="search_button" name="submit" value="Suchen" /> 
 
 <div id="suchergebnis">
 	<br/>
@@ -108,7 +108,6 @@ if(!empty($_POST['checkbox'])) {
 				echo "<strong>Mitarbeiter:</strong> " . $te["vorname"] . " " . $te["nachname"] . "<br/>";
 				echo "<strong>E-Mail:</strong> "; echo "<a href='mailto:" . $te["mailadresse"] . " '> " . $te["mailadresse"]. " </a> <br/>";
 				echo "<strong>Insitut:</strong> " . $te["institutname"] . "<br/>";
-				
 				echo "<strong>Kategorie:</strong> ";
 				
 				$j = 0;
