@@ -93,11 +93,9 @@ if(!empty($_POST['checkbox'])) {
 	<br/>
 </div>
 
-<<<<<<< HEAD
+
     <input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:55px; margin-left:245px"  /> 
 
-=======
->>>>>>> 08399a68e1c62d4796ba72b117155921e3732eaa
 <div id="suchergebnis">
 	<br/>
 	<h2>Suchergebnis</h2>
