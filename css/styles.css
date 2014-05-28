@@ -94,7 +94,7 @@ label {
 }
 
 fieldset, img {
-    border: 0 none;
+    /*border: 0 none;*/
 }
 
 address, caption, cite, code, dfn, var {

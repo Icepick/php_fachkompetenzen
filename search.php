@@ -65,7 +65,7 @@ if(!empty($_POST['checkbox'])) {
 	<body1>Bitte wählen Sie eine oder mehrere Kategorien aus und/oder geben Sie einen Suchbegriff ein.</body1><!--</p><br />-->
 
     <input id="tags" class="search" type="text" name="eingabe" placeholder="Suchen.." value="<?php if(!empty($eingabe)) { echo $eingabe; } ?>" />
-	<input type="submit" class="search_button" name="submit" value="Suchen" /> 
+	<!--<input type="submit" class="search_button" name="submit" value="Suchen" /> -->
 
 </div>
 
@@ -93,8 +93,7 @@ if(!empty($_POST['checkbox'])) {
 	<br/>
 </div>
 
-
-    <input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:55px; margin-left:245px"  /> 
+<input type="submit" class="search_button" name="submit" value="Suchen" style="margin-top:55px; margin-left:275px"  /> 
 
 <div id="suchergebnis">
 	<br/>
