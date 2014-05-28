@@ -64,7 +64,8 @@ if(!empty($_POST['checkbox'])) {
 
 	<body1>Bitte wählen Sie eine oder mehrere Kategorien aus und/oder geben Sie einen Suchbegriff ein.</body1><!--</p><br />-->
 
-    <input id="tags" class="search" type="text" name="eingabe" placeholder="Suchen.." />
+    <input id="tags" class="search" type="text" name="eingabe" placeholder="Suchen.." value="<?php if(!empty($eingabe)) { echo $eingabe; } ?>" />
+	<input type="submit" class="search_button" name="submit" value="Suchen" /> 
 
 </div>
 
@@ -81,8 +82,9 @@ if(!empty($_POST['checkbox'])) {
 	<li>
 	<label>
 	<input class="checkbox" type="checkbox" name="checkbox[<?php $search['name']; ?>]" 
-		id="checkbox[<?php $search['name']; ?>]" value="<?php echo $search['name']; ?>"> 
-		&nbsp;<?php echo $search['name']; ?>
+		id="checkbox[<?php $search['name']; ?>]" value="<?php echo $search['name']; ?>" 
+		<?php if (in_array($search['name'], $inCheckboxes)){ echo "checked"; } ?>> 
+		&nbsp;<?php echo $search['name']; ?>	
 	</label>
 	</li>
 
@@ -91,55 +93,60 @@ if(!empty($_POST['checkbox'])) {
 	<br/>
 </div>
 
-  <input type="submit" class="search_button" name="submit" value="Suchen" /> 
-
 <div id="suchergebnis">
 	<br/>
 	<h2>Suchergebnis</h2>
   
     <?php
 		if(isset($eingabe) && isset($inCheckboxes)) {
-			$result = executeSqlQuery($verb, ultimateTextSearch($eingabe, $inCheckboxes)); //suchergebnis
-			echo "<strong>Suchbegriff: " . $eingabe . "</strong><br/>";
-			echo "<strong>Auswahl: "; foreach($inCheckboxes as $x=>$y) { echo $y . " | "; } echo "</strong><br/><br/>";
-			while ($te = mysqli_fetch_array($result)) {
-				$result2 = executeSqlQuery($verb, spezByMitarbeiter($te["mitarbeiterID"], false)); //alle spezifikationen von kategorie x und mitarbeiter y
-				$result3 = executeSqlQuery($verb, spezByMitarbeiter($te["mitarbeiterID"], true)); //alle spezifikationen von kategorie x und mitarbeiter y
-				echo "<div style='border: 1px solid #000; padding:10px'>";
-				echo "<strong>Mitarbeiter:</strong> " . $te["vorname"] . " " . $te["nachname"] . "<br/>";
-				echo "<strong>E-Mail:</strong> "; echo "<a href='mailto:" . $te["mailadresse"] . " '> " . $te["mailadresse"]. " </a> <br/>";
-				echo "<strong>Insitut:</strong> " . $te["institutname"] . "<br/>";
-				echo "<strong>Kategorie:</strong> ";
+			if(!empty($eingabe) || count($inCheckboxes) !== 0) {
+				$result = executeSqlQuery($verb, ultimateTextSearch($eingabe, $inCheckboxes)); //suchergebnis				
+				//echo "SQL Befehl<br/>" . ultimateTextSearch($eingabe, $inCheckboxes) . "<br/>";
 				
-				$j = 0;
-				while ($tj = mysqli_fetch_array($result3)) {
-					 if($j == 0) {
-						echo $tj["name"];
-					} else {
-						echo ",  " . $tj["name"];
+				echo "<strong>Gefunden:</strong> " . $result->num_rows . " Einträge&nbsp;&nbsp;&nbsp;";
+				echo "<strong>Suchbegriff:</strong> " . $eingabe . "<br/>";
+				echo "<strong>Auswahl:</strong> "; foreach($inCheckboxes as $x=>$y) { echo $y . " | "; } echo "<br/><br/>";
+				while ($te = mysqli_fetch_array($result)) {
+					$result2 = executeSqlQuery($verb, spezByMitarbeiter($te["mitarbeiterID"], false));
+					$result3 = executeSqlQuery($verb, spezByMitarbeiter($te["mitarbeiterID"], true));
+					echo "<div style='border: 1px solid #000; padding:10px'>";
+					echo "<strong>Mitarbeiter:</strong> " . $te["vorname"] . " " . $te["nachname"] . "<br/>";
+					echo "<strong>E-Mail:</strong> "; echo "<a href='mailto:" . $te["mailadresse"] . " '> " . $te["mailadresse"]. " </a> <br/>";
+					echo "<strong>Insitut:</strong> " . $te["institutname"] . "<br/>";
+					echo "<strong>Kategorie:</strong> ";
+					
+					$j = 0;
+					while ($tj = mysqli_fetch_array($result3)) {
+						 if($j == 0) {
+							echo $tj["name"];
+						} else {
+							echo ",  " . $tj["name"];
+						}
+						$j++;
 					}
-					$j++;
-				}
-				
-				echo "<br/>";
-				echo "<strong>Kompetenz:</strong> ";
-				
-				$i = 0;
-				while ($ti = mysqli_fetch_array($result2)) {
-					if($i == 0) {
-						echo $ti["spezname"];
-					} else {
-						echo ",  " . $ti["spezname"];
+					
+					echo "<br/>";
+					echo "<strong>Kompetenz:</strong> ";
+					
+					$i = 0;
+					while ($ti = mysqli_fetch_array($result2)) {
+						if($i == 0) {
+							echo $ti["spezname"];
+						} else {
+							echo ",  " . $ti["spezname"];
+						}
+						$i++;
 					}
-					$i++;
-				}
-				
-				echo "<br/>";
-				echo "<a href='" . $te["mitarbeiterlink"] . " '>Link zum HTW-Profil</a> <br/>";
+					
+					echo "<br/>";
+					echo "<a href='" . $te["mitarbeiterlink"] . " '>Link zum HTW-Profil</a> <br/>";
 
-								
-				echo "</div>";
-				echo "<br/><br/>";
+									
+					echo "</div>";
+					echo "<br/><br/>";
+			}
+		} else {
+			echo "Es wurde keine Suche gestartet!";
 		}
 }
 	
