@@ -72,7 +72,6 @@ label {
 }
 
 .search_button {
-	margin-left: 180px;
 	width: 60px;
 	height: 25px;
 }
@@ -82,7 +81,7 @@ label {
 }
 
 #suchergebnis {
-	margin-top:20px;
+	margin-top:160px;
 }
 
 .anmelden {

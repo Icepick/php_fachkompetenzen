@@ -44,6 +44,7 @@ $tblk = "kategorie";
 		return $sql;
 	}
 	
+	
 	function ultimateTextSearch($suchbegriff, $inCheckboxes) {
 		$sql  = "SELECT s.spezname, k.ID AS 'kategorieID', k.name AS 'kategoriename', m.link AS 'mitarbeiterlink', m.ID AS 'mitarbeiterID', 
 						m.vorname, m.name AS 'nachname', m.mailadresse, i.name AS 'institutname' ";
@@ -60,8 +61,27 @@ $tblk = "kategorie";
 				$sql .= "OR k.name = '" . $value . "' ";
 			}
 			
-			//resultat bzw. checkboxes nach suchbegriff filtern!
-			if(count($inCheckboxes) == 0) {
+			//suchbegriff integrieren
+			$sql = searchByText(false, $sql, $suchbegriff);
+		}	
+		
+		//suchbegriff integrieren
+		if(count($inCheckboxes) == 0) {
+			$sql = searchByText(true, $sql, $suchbegriff);
+		} else {
+			$sql = searchByText(false, $sql, $suchbegriff);
+		}
+		
+		//resultate nur einmal ausgeben
+		$sql .= "GROUP BY m.mailadresse ";
+		$sql .= ";";
+		
+		return $sql;
+	}
+	
+	function searchByText($isWhere, $sql, $suchbegriff) {
+			//Abfrage sucht nach suchbegriff
+			if($isWhere) {
 				$sql .= "WHERE (s.spezname LIKE '%". $suchbegriff . "%' ";
 			} else {
 				$sql .= "AND (s.spezname LIKE '%". $suchbegriff . "%' ";
@@ -71,29 +91,7 @@ $tblk = "kategorie";
 			$sql .= "OR m.mailadresse LIKE '%". $suchbegriff . "%' ";
 			$sql .= "OR k.name LIKE '%". $suchbegriff . "%' ";
 			$sql .= "OR i.name LIKE '%". $suchbegriff . "%') ";
-		}	
-		
-		//resultate nur einmal ausgeben
-		$sql .= "GROUP BY m.mailadresse ";
-		$sql .= ";";
-		
-		return $sql;
-	
-		// Zum testen in MySQL, suche nach CSS:
-		/*
-		SELECT * FROM `spezifikation` s
-		INNER JOIN `kategorie` k ON s.kategorienId = k.id
-		INNER JOIN `mitarbeiter` m ON s.mitarbeiterId = m.id
-		INNER JOIN `institut` i ON m.institutsId = i.Id
-		WHERE
-		s.spezname LIKE '%CSS%'
-		OR m.vorname LIKE '%CSS%'
-		OR m.name LIKE '%CSS%'
-		OR m.mailadresse LIKE '%CSS%'
-		OR k.name LIKE '%CSS%'
-		OR i.name LIKE '%CSS%';
-		*/
-	
+			return $sql;
 	}
 	
 	
